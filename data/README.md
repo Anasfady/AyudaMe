@@ -1,19 +1,22 @@
-# Datos mock — AyudaMe MVP
+# Datos — AyudaMe MVP
 
-Todos los archivos `.mock.json` y `emergency-context.json` en esta carpeta son
-**datos sintéticos de demostración**. No representan asociaciones, personas ni
-emergencias reales.
+Los datos del MVP distinguen entre el contexto histórico de emergencia y los
+datos simulados utilizados para demostrar la operativa de asociaciones.
 
 ## Archivos
 
-- `emergency-context.json` — contexto del escenario de emergencia mostrado en
-  el mapa del MVP, incluida la fecha (`date`) del escenario.
-  `source.type: "mock"` indica que es un dato de demo.
-- `associations.mock.json` — array raíz con asociaciones/organizaciones
-  sintéticas que ofrecen recursos. Los nombres, IDs y coordenadas son
-  ficticios.
-- `alertas.json`, `ayudas.json`, `necesidades.json` — reservados para otras
-  responsabilidades del equipo (aún vacíos en este branch).
+- `emergency-context.json` — contexto histórico de referencia basado en la
+  DANA de Valencia de 2024. Incluye la fecha de referencia del escenario y
+  metadatos de la fuente geográfica utilizada.
+- `dana-horta-sud-copernicus.geojson` — geometría de inundación observada en
+  Horta Sud procedente de Copernicus Emergency Management Service, activación
+  EMSR773, AOI03, producto de delineación `observedEventA`. Representa la zona
+  cartografiada dentro de esa área de interés, no toda la extensión de la DANA.
+- `associations.mock.json` — asociaciones, necesidades y recursos sintéticos
+  utilizados exclusivamente para validar la funcionalidad del MVP. Los nombres,
+  IDs y coordenadas de estas asociaciones son ficticios.
+- `alertas.json`, `ayudas.json`, `necesidades.json` — archivos reservados para
+  otras responsabilidades del equipo.
 
 ## Contrato `Association` (dato bruto en `associations.mock.json`)
 

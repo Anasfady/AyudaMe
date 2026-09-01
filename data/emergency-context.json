@@ -1,12 +1,18 @@
 {
   "id": "emergency-context-001",
-  "name": "Demo Flood Scenario (Comunidad Valenciana)",
+  "name": "DANA Valencia 2024 — Horta Sud",
   "country": "Spain",
   "event_type": "flood",
   "risk_level": "high",
-  "status": "active",
-  "date": "2026-09-01",
+  "status": "historical",
+  "date": "2024-10-29",
   "source": {
-    "type": "mock"
-  }
+    "type": "official",
+    "provider": "Copernicus Emergency Management Service",
+    "activation": "EMSR773",
+    "aoi": "AOI03",
+    "area_name": "Horta Sud",
+    "product": "DEL_PRODUCT observedEventA v1"
+  },
+  "geometry_file": "dana-horta-sud-copernicus.geojson"
 }
