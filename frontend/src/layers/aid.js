@@ -1,44 +1,26 @@
 /**
- * Capa de asociaciones/recursos (aid.js)
+ * Manager de asociaciones/recursos (aid.js)
  *
- * Exporta:
- * - createAidLayers(associations, options) -> devuelve un objeto con capas:
- *     { all, water, non_perishable_food, baby_products }
- * - setAidLayerVisible(map, layer, visible) -> añade/quita una capa del mapa
+ * Esta versión intenta reutilizar las implementaciones de marcadores y popups
+ * si están disponibles (por ejemplo la implementación propuesta en el PR #7
+ * de @Isabela-Tellez). Si no están presentes, usa un fallback interno.
  *
- * Usa marcadores SVG mediante L.divIcon para un aspecto consistente.
- * Expectativa de los datos: asociaciones normalizadas según associationsDataService:
- * { id, name, lat, lng, status, needs:[], availableResources:[] }
+ * API principal:
+ *   - createAidManager(associations, options) -> Promise<manager>
+ *     manager:
+ *       - markers: Array<Marker>
+ *       - markersLayer: LayerGroup (no agregado por defecto al mapa)
+ *       - updateVisibility(map, { showAll, categories }) -> void
+ *
+ * Expectativa de los datos: asociaciones normalizadas según
+ * associationsDataService: { id, name, lat, lng, status, needs:[], availableResources:[] }
  */
 
-const CATEGORY_STYLES = {
-  water: {
-    color: "#0b5cff",
-    fillColor: "#60a5fa",
-  },
-  non_perishable_food: {
-    color: "#92400e",
-    fillColor: "#f59e0b",
-  },
-  baby_products: {
-    color: "#be185d",
-    fillColor: "#fb7185",
-  },
-  all: {
-    color: "#0f766e",
-    fillColor: "#34d399",
-  },
-};
-
-function isActiveAssociation(assoc) {
-  const status = String(assoc?.status ?? "").toLowerCase();
-  if (!status) return true;
-  return status === "active" || status === "activo";
-}
+const DEFAULT_CATEGORIES = ["water", "non_perishable_food", "baby_products"];
 
 function safeJoin(arr) {
   if (!Array.isArray(arr) || arr.length === 0) return "—";
-  return arr.join(", ");
+  return arr.map(String).join(", ");
 }
 
 function createSvgDivIcon(leaflet, color, size = 28) {
@@ -62,91 +44,108 @@ function createSvgDivIcon(leaflet, color, size = 28) {
   });
 }
 
-function createMarker(leaflet, assoc, icon, popupOptions = {}) {
-  const marker = leaflet.marker([assoc.lat, assoc.lng], { icon });
+async function tryLoadExternal(leaflet) {
+  // Intentar cargar implementaciones externas (markers.js / popups.js)
+  try {
+    // dynamic import relative to this module
+    const markersMod = await import("./markers.js");
+    const popupsMod = await import("./popups.js");
 
-  marker.associationData = assoc;
-  marker.associationId = assoc.id ?? null;
-  marker.availableResources = Array.isArray(assoc.availableResources)
-    ? assoc.availableResources
-    : [];
-  marker.needs = Array.isArray(assoc.needs) ? assoc.needs : [];
+    return {
+      createMarker: markersMod.createMarker ?? markersMod.default,
+      createPopup: popupsMod.createPopup ?? popupsMod.default,
+    };
+  } catch (err) {
+    return null;
+  }
+}
 
-  const popupHtml = `
+function buildPopupHtml(assoc) {
+  return `
     <div style="min-width:180px">
       <strong>${assoc.name}</strong>
       <div style="margin-top:4px"><small>ID: ${assoc.id}</small></div>
       <hr style="margin:6px 0" />
-      <div><strong>Recursos disponibles:</strong><div>${safeJoin(marker.availableResources)}</div></div>
-      <div><strong>Necesita:</strong><div>${safeJoin(marker.needs)}</div></div>
+      <div><strong>Recursos disponibles:</strong><div>${safeJoin(assoc.availableResources)}</div></div>
+      <div><strong>Necesita:</strong><div>${safeJoin(assoc.needs)}</div></div>
       <div style="margin-top:6px"><small>Estado: ${assoc.status ?? "unknown"}</small></div>
     </div>
   `.trim();
-
-  marker.bindPopup(popupHtml, popupOptions);
-  return marker;
 }
 
-/**
- * associations: lista normalizada (output de associationsDataService)
- * options:
- *  - leaflet: instancia L (por defecto globalThis.L)
- *  - popupOptions: opciones para bindPopup
- *
- * Devuelve { all, water, non_perishable_food, baby_products } (LayerGroup).
- */
-export function createAidLayers(associations = [], options = {}) {
+export async function createAidManager(associations = [], options = {}) {
   const leaflet = options.leaflet ?? globalThis.L;
   if (!leaflet) throw new Error("Leaflet no está disponible.");
 
-  const layers = {
-    all: leaflet.layerGroup(),
-    water: leaflet.layerGroup(),
-    non_perishable_food: leaflet.layerGroup(),
-    baby_products: leaflet.layerGroup(),
+  const external = await tryLoadExternal(leaflet);
+
+  // Precrear iconos por categoría
+  const icons = {
+    all: createSvgDivIcon(leaflet, "#34d399"),
+    water: createSvgDivIcon(leaflet, "#60a5fa"),
+    non_perishable_food: createSvgDivIcon(leaflet, "#f59e0b"),
+    baby_products: createSvgDivIcon(leaflet, "#fb7185"),
   };
 
-  const icons = {
-    all: createSvgDivIcon(leaflet, CATEGORY_STYLES.all.fillColor),
-    water: createSvgDivIcon(leaflet, CATEGORY_STYLES.water.fillColor),
-    non_perishable_food: createSvgDivIcon(leaflet, CATEGORY_STYLES.non_perishable_food.fillColor),
-    baby_products: createSvgDivIcon(leaflet, CATEGORY_STYLES.baby_products.fillColor),
-  };
+  const markers = [];
+  const markersLayer = leaflet.layerGroup(); // útil si se quiere agrupar todos
 
   for (const assoc of associations) {
     if (!assoc || typeof assoc !== "object") continue;
-    if (!isActiveAssociation(assoc)) continue;
     if (!Number.isFinite(Number(assoc.lat)) || !Number.isFinite(Number(assoc.lng))) continue;
 
-    try {
-      const mAll = createMarker(leaflet, assoc, icons.all, options.popupOptions);
-      mAll.addTo(layers.all);
-    } catch {
-      // ignore
+    let marker = null;
+
+    if (external && typeof external.createMarker === "function") {
+      try {
+        // allow external factory to create marker (should NOT add it to the map)
+        marker = external.createMarker(leaflet, assoc, { icons });
+      } catch (err) {
+        marker = null;
+      }
     }
 
-    const resources = Array.isArray(assoc.availableResources) ? assoc.availableResources : [];
+    if (!marker) {
+      // fallback simple marker with svg icon and popup
+      const categoryIcon = icons.all;
+      marker = leaflet.marker([assoc.lat, assoc.lng], { icon: categoryIcon });
 
-    for (const res of resources) {
-      if (!res || typeof res !== "string") continue;
-      const normalized = String(res).trim();
-      if (Object.prototype.hasOwnProperty.call(layers, normalized)) {
+      const popupHtml = buildPopupHtml(assoc);
+      marker.bindPopup(popupHtml, options.popupOptions ?? {});
+    }
+
+    marker.associationData = assoc;
+    marker.categories = Array.isArray(assoc.availableResources) ? assoc.availableResources : [];
+
+    // No añadimos el marker al mapa aquí — la visibilidad la gestionará updateVisibility
+    markers.push(marker);
+    markersLayer.addLayer(marker);
+  }
+
+  function updateVisibility(map, { showAll = true, categories = [] } = {}) {
+    if (!map) return;
+
+    for (const marker of markers) {
+      const hasCategory = marker.categories && marker.categories.some((c) => categories.includes(c));
+      const shouldShow = Boolean(showAll || hasCategory);
+
+      if (shouldShow && !map.hasLayer(marker)) {
+        marker.addTo(map);
+      }
+
+      if (!shouldShow && map.hasLayer(marker)) {
         try {
-          const icon = icons[normalized] ?? icons.all;
-          const m = createMarker(leaflet, assoc, icon, options.popupOptions);
-          m.addTo(layers[normalized]);
-        } catch {
-          continue;
+          map.removeLayer(marker);
+        } catch (e) {
+          // ignore
         }
       }
     }
   }
 
-  return layers;
-}
-
-export function setAidLayerVisible(map, layer, visible) {
-  if (!map || !layer) return;
-  if (visible && !map.hasLayer(layer)) map.addLayer(layer);
-  if (!visible && map.hasLayer(layer)) map.removeLayer(layer);
+  return {
+    markers,
+    markersLayer,
+    updateVisibility,
+  };
 }

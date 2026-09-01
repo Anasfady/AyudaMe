@@ -1,13 +1,15 @@
 /**
  * Inicializa las capas de asociaciones y añade toggles en el sidebar.
  *
- * Importante: se asume que map.js ya ha sido ejecutado y exporta `map`.
- * Se asume que associationsDataService.js existe y expone loadAssociations().
+ * Esta versión usa createAidManager() para crear marcadores únicos por
+ * asociación y evita crear duplicados cuando se combinan "Mostrar todas"
+ * y filtros de categoría. Además, si existen implementaciones externas
+ * (markers.js / popups.js) se reutilizan automáticamente.
  */
 
 import { map } from "../map.js";
 import { loadAssociations } from "../services/associationsDataService.js";
-import { createAidLayers, setAidLayerVisible } from "../layers/aid.js";
+import { createAidManager } from "../layers/aid.js";
 
 function createControlsHtml() {
   return `
@@ -45,31 +47,40 @@ async function initAidLayers() {
     return;
   }
 
-  const aidLayers = createAidLayers(associations, { leaflet: globalThis.L });
+  const manager = await createAidManager(associations, { leaflet: globalThis.L });
 
-  // Añadir la capa "all" por defecto
-  aidLayers.all.addTo(map);
+  // Estado inicial de filtros
+  let state = {
+    showAll: true,
+    categories: [],
+  };
+
+  // Aplicar visibilidad inicial
+  manager.updateVisibility(map, state);
 
   const cbAll = document.getElementById("aid-toggle-all");
   const cbWater = document.getElementById("aid-toggle-water");
   const cbFood = document.getElementById("aid-toggle-food");
   const cbBaby = document.getElementById("aid-toggle-baby");
 
-  cbAll.addEventListener("change", (e) => {
-    setAidLayerVisible(map, aidLayers.all, e.target.checked);
-  });
-  cbWater.addEventListener("change", (e) => {
-    setAidLayerVisible(map, aidLayers.water, e.target.checked);
-  });
-  cbFood.addEventListener("change", (e) => {
-    setAidLayerVisible(map, aidLayers.non_perishable_food, e.target.checked);
-  });
-  cbBaby.addEventListener("change", (e) => {
-    setAidLayerVisible(map, aidLayers.baby_products, e.target.checked);
-  });
+  function applyFiltersFromUI() {
+    const showAll = cbAll.checked;
+    const categories = [];
+    if (cbWater.checked) categories.push("water");
+    if (cbFood.checked) categories.push("non_perishable_food");
+    if (cbBaby.checked) categories.push("baby_products");
+
+    state = { showAll, categories };
+    manager.updateVisibility(map, state);
+  }
+
+  cbAll.addEventListener("change", applyFiltersFromUI);
+  cbWater.addEventListener("change", applyFiltersFromUI);
+  cbFood.addEventListener("change", applyFiltersFromUI);
+  cbBaby.addEventListener("change", applyFiltersFromUI);
 
   // Exponer para depuración
-  window.__AyudaMeAidLayers = aidLayers;
+  window.__AyudaMeAidManager = manager;
 }
 
 if (document.readyState === "loading") {

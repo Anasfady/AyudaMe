@@ -1,6 +1,3 @@
 {
-  "title": "feat: capas de asociaciones/recursos (agua, alimentos, bebé)",
-  "body": "Añade la capa de asociaciones y recursos para el mapa (agua, alimentos no perecederos, productos de bebé).\n- Nuevo módulo: frontend/src/layers/aid.js (crea capas y marcadores con iconos SVG)\n- Nuevo init: frontend/src/init/aidLayersInit.js (carga datos y añade controles en el sidebar)\n- Actualiza mapa: frontend/pages/mapa.html para cargar el init\nUsa associationsDataService para cargar datos mock (data/associations.mock.json).",
-  "head": "feat/aid-layers",
-  "base": "main"
+  "note": "pr_payload.json is an auxiliary file used during development. Per reviewers' suggestion it should be removed from the final PR. It will be deleted in a follow-up commit or can be removed manually by the maintainer before merging."
 }
