@@ -5,6 +5,10 @@
  * si están disponibles (por ejemplo la implementación propuesta en el PR #7
  * de @Isabela-Tellez). Si no están presentes, usa un fallback interno.
  *
+ * Se ha mejorado la detección de módulos externos y la adaptación de nombres
+ * de funciones para ser compatible con los exports de PR #7 (createAssociationMarker,
+ * createAssociationPopup).
+ *
  * API principal:
  *   - createAidManager(associations, options) -> Promise<manager>
  *     manager:
@@ -13,7 +17,7 @@
  *       - updateVisibility(map, { showAll, categories }) -> void
  *
  * Expectativa de los datos: asociaciones normalizadas según
- * associationsDataService: { id, name, lat, lng, status, needs:[], availableResources:[] }
+ * associationsDataService: { id, name, lat, lng, status, needs:[], availableResources:[], municipality }
  */
 
 const DEFAULT_CATEGORIES = ["water", "non_perishable_food", "baby_products"];
@@ -44,20 +48,93 @@ function createSvgDivIcon(leaflet, color, size = 28) {
   });
 }
 
+/**
+ * Intentamos importar implementaciones externas desde posibles ubicaciones
+ * y adaptamos las firmas para proporcionar una API uniforme:
+ *  - createMarker(leaflet, assoc, options) -> marker
+ *  - createPopup(assoc) -> html
+ */
 async function tryLoadExternal(leaflet) {
-  // Intentar cargar implementaciones externas (markers.js / popups.js)
-  try {
-    // dynamic import relative to this module
-    const markersMod = await import("./markers.js");
-    const popupsMod = await import("./popups.js");
+  const candidates = [
+    "../components/markers.js",
+    "../components/popups.js",
+    // en caso de cargas desde otra ruta (según bundling) probar variantes relativas
+    "./../components/markers.js",
+    "./../components/popups.js",
+  ];
 
-    return {
-      createMarker: markersMod.createMarker ?? markersMod.default,
-      createPopup: popupsMod.createPopup ?? popupsMod.default,
-    };
-  } catch (err) {
+  let markersMod = null;
+  let popupsMod = null;
+
+  // Intentar cargar módulos de marcadores y popups por separado
+  for (const path of ["../components/markers.js", "./../components/markers.js"]) {
+    try {
+      markersMod = await import(path);
+      if (markersMod) break;
+    } catch (err) {
+      // continuar a siguiente candidato
+    }
+  }
+
+  for (const path of ["../components/popups.js", "./../components/popups.js"]) {
+    try {
+      popupsMod = await import(path);
+      if (popupsMod) break;
+    } catch (err) {
+      // continuar
+    }
+  }
+
+  if (!markersMod && !popupsMod) {
     return null;
   }
+
+  // Adaptadores: crear funciones createMarker/createPopup compatibles
+  const adapted = {};
+
+  // Popup adapter: soporta createAssociationPopup(export) o default
+  if (popupsMod) {
+    const popupFactory = popupsMod.createAssociationPopup || popupsMod.createPopup || popupsMod.default || null;
+
+    if (typeof popupFactory === "function") {
+      adapted.createPopup = (assoc) => {
+        try {
+          return popupFactory(assoc);
+        } catch (err) {
+          return null;
+        }
+      };
+    }
+  }
+
+  // Marker adapter: soporta createAssociationMarker(association, popupHtml)
+  if (markersMod) {
+    const markerFactory = markersMod.createAssociationMarker || markersMod.createMarker || markersMod.default || null;
+
+    if (typeof markerFactory === "function") {
+      adapted.createMarker = (leafletInst, assoc, opts = {}) => {
+        try {
+          // algunos factories esperan popup HTML como segundo argumento
+          const popupHtml = adapted.createPopup ? adapted.createPopup(assoc) : "";
+
+          // createAssociationMarker en PR #7 acepta (association, popupContent)
+          const marker = markerFactory(assoc, popupHtml);
+
+          // Si la implementación externa no setea associationData, lo hacemos aquí
+          if (marker && typeof marker === "object") {
+            marker.associationData = assoc;
+            marker.categories = Array.isArray(assoc.availableResources) ? assoc.availableResources : [];
+          }
+
+          return marker;
+        } catch (err) {
+          return null;
+        }
+      };
+    }
+  }
+
+  return adapted;
 }
 
 function buildPopupHtml(assoc) {
@@ -79,7 +156,7 @@ export async function createAidManager(associations = [], options = {}) {
 
   const external = await tryLoadExternal(leaflet);
 
-  // Precrear iconos por categoría
+  // Precrear iconos por categoría (fallback visual)
   const icons = {
     all: createSvgDivIcon(leaflet, "#34d399"),
     water: createSvgDivIcon(leaflet, "#60a5fa"),
@@ -96,9 +173,9 @@ export async function createAidManager(associations = [], options = {}) {
 
     let marker = null;
 
+    // Si hay adaptadores externos, intentar usarlos
     if (external && typeof external.createMarker === "function") {
       try {
-        // allow external factory to create marker (should NOT add it to the map)
         marker = external.createMarker(leaflet, assoc, { icons });
       } catch (err) {
         marker = null;
@@ -106,16 +183,16 @@ export async function createAidManager(associations = [], options = {}) {
     }
 
     if (!marker) {
-      // fallback simple marker with svg icon and popup
+      // fallback simple marker con svg icon y popup
       const categoryIcon = icons.all;
       marker = leaflet.marker([assoc.lat, assoc.lng], { icon: categoryIcon });
 
       const popupHtml = buildPopupHtml(assoc);
       marker.bindPopup(popupHtml, options.popupOptions ?? {});
-    }
 
-    marker.associationData = assoc;
-    marker.categories = Array.isArray(assoc.availableResources) ? assoc.availableResources : [];
+      marker.associationData = assoc;
+      marker.categories = Array.isArray(assoc.availableResources) ? assoc.availableResources : [];
+    }
 
     // No añadimos el marker al mapa aquí — la visibilidad la gestionará updateVisibility
     markers.push(marker);
