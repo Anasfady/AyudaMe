@@ -6,6 +6,60 @@
  * que puede añadirse o quitarse del mapa.
  */
 
+function isActiveAlert(alert) {
+  const status = String(alert?.status ?? "").toLowerCase();
+
+  if (!status) {
+    return true;
+  }
+
+  return status === "active" || status === "activa";
+}
+
+function getZoneCoordinates(zone) {
+  if (!zone) {
+    return null;
+  }
+
+  if (Array.isArray(zone)) {
+    return zone;
+  }
+
+  if (zone.type === "Feature") {
+    return zone.geometry?.coordinates ?? null;
+  }
+
+  if (zone.type === "Polygon" || zone.type === "MultiPolygon") {
+    return zone.coordinates ?? null;
+  }
+
+  return null;
+}
+
+function getFirstCoordinate(value) {
+  if (!Array.isArray(value) || value.length === 0) {
+    return null;
+  }
+
+  if (
+    value.length >= 2 &&
+    Number.isFinite(Number(value[0])) &&
+    Number.isFinite(Number(value[1]))
+  ) {
+    return value;
+  }
+
+  for (const item of value) {
+    const coordinate = getFirstCoordinate(item);
+
+    if (coordinate) {
+      return coordinate;
+    }
+  }
+
+  return null;
+}
+
 function getCoordinates(alert) {
   const latitude =
     alert?.latitude ??
@@ -22,11 +76,25 @@ function getCoordinates(alert) {
   const lat = Number(latitude);
   const lng = Number(longitude);
 
-  if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+  if (Number.isFinite(lat) && Number.isFinite(lng)) {
+    return [lat, lng];
+  }
+
+  const zoneCoordinates = getZoneCoordinates(alert?.zone);
+  const firstCoordinate = getFirstCoordinate(zoneCoordinates);
+
+  if (!firstCoordinate) {
     return null;
   }
 
-  return [lat, lng];
+  /*
+   * GeoJSON utiliza [longitude, latitude].
+   * Leaflet utiliza [latitude, longitude].
+   */
+  return [
+    Number(firstCoordinate[1]),
+    Number(firstCoordinate[0]),
+  ];
 }
 
 function getAlertStyle(riskLevel) {
@@ -71,6 +139,10 @@ export function createAlertsLayer(alerts = [], options = {}) {
   const layer = leaflet.layerGroup();
 
   for (const alert of alerts) {
+    if (!isActiveAlert(alert)) {
+      continue;
+    }
+
     const coordinates = getCoordinates(alert);
 
     if (!coordinates) {
@@ -82,7 +154,14 @@ export function createAlertsLayer(alerts = [], options = {}) {
       getAlertStyle(alert.risk_level),
     );
 
+    /*
+     * Se conserva la referencia a la alerta para que otros módulos
+     * (por ejemplo popups) puedan utilizarla sin duplicar lógica.
+     */
     marker.alertData = alert;
+    marker.alertId = alert.id ?? null;
+    marker.zoneData = alert.zone ?? null;
+
     marker.addTo(layer);
   }
 

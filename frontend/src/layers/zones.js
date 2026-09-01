@@ -2,9 +2,18 @@
  * Capa de zonas afectadas para el mapa de AyudaMe.
  *
  * Este módulo no inicializa el mapa ni carga datos.
- * Recibe geometrías compatibles con GeoJSON y devuelve
- * una capa Leaflet que puede añadirse o quitarse del mapa.
+ * Recibe alertas con una propiedad `zone` y crea polígonos Leaflet.
  */
+
+function isActiveAlert(alert) {
+  const status = String(alert?.status ?? "").toLowerCase();
+
+  if (!status) {
+    return true;
+  }
+
+  return status === "active" || status === "activa";
+}
 
 function getZoneStyle(riskLevel) {
   const level = String(riskLevel ?? "").toLowerCase();
@@ -13,8 +22,8 @@ function getZoneStyle(riskLevel) {
     return {
       color: "#b91c1c",
       fillColor: "#dc2626",
-      weight: 2,
-      fillOpacity: 0.25,
+      weight: 3,
+      fillOpacity: 0.35,
     };
   }
 
@@ -35,42 +44,70 @@ function getZoneStyle(riskLevel) {
   };
 }
 
-function getGeometry(item) {
-  if (!item) {
+function isCoordinatePair(value) {
+  return (
+    Array.isArray(value) &&
+    value.length >= 2 &&
+    Number.isFinite(Number(value[0])) &&
+    Number.isFinite(Number(value[1]))
+  );
+}
+
+function convertGeoJsonCoordinates(value) {
+  if (isCoordinatePair(value)) {
+    /*
+     * GeoJSON: [longitude, latitude]
+     * Leaflet: [latitude, longitude]
+     */
+    return [Number(value[1]), Number(value[0])];
+  }
+
+  if (!Array.isArray(value)) {
     return null;
   }
 
-  if (item.type === "Feature" || item.type === "FeatureCollection") {
-    return item;
+  const converted = value
+    .map(convertGeoJsonCoordinates)
+    .filter((item) => item !== null);
+
+  return converted.length > 0 ? converted : null;
+}
+
+function getLeafletCoordinates(zone) {
+  if (!zone) {
+    return null;
   }
 
-  if (
-    item.type === "Polygon" ||
-    item.type === "MultiPolygon"
-  ) {
-    return item;
+  /*
+   * Permite utilizar directamente arrays Leaflet:
+   * [[lat, lng], [lat, lng], ...]
+   */
+  if (Array.isArray(zone)) {
+    return zone;
   }
 
-  if (item.zone) {
-    return item.zone;
+  if (zone.type === "Feature") {
+    return getLeafletCoordinates(zone.geometry);
   }
 
-  if (item.geometry) {
-    return item.geometry;
+  if (zone.type === "Polygon" || zone.type === "MultiPolygon") {
+    return convertGeoJsonCoordinates(zone.coordinates);
+  }
+
+  if (zone.geometry) {
+    return getLeafletCoordinates(zone.geometry);
   }
 
   return null;
 }
 
 /**
- * Crea una capa Leaflet con las zonas afectadas válidas.
+ * Crea una capa con las zonas de las alertas activas.
  *
- * @param {Array<object>} zones
- * @param {object} options
- * @param {object} [options.leaflet] Instancia de Leaflet para facilitar tests.
- * @returns {object} L.LayerGroup
+ * Cada polígono conserva la referencia a su alerta para facilitar
+ * popups, interacción e integración con otros módulos.
  */
-export function createZonesLayer(zones = [], options = {}) {
+export function createZonesLayer(alerts = [], options = {}) {
   const leaflet = options.leaflet ?? globalThis.L;
 
   if (!leaflet) {
@@ -79,27 +116,36 @@ export function createZonesLayer(zones = [], options = {}) {
 
   const layer = leaflet.layerGroup();
 
-  for (const item of zones) {
-    const geometry = getGeometry(item);
-
-    if (!geometry) {
+  for (const alert of alerts) {
+    if (!isActiveAlert(alert)) {
       continue;
     }
 
-    const riskLevel =
-      item?.risk_level ??
-      item?.properties?.risk_level ??
-      geometry?.properties?.risk_level;
+    const coordinates = getLeafletCoordinates(
+      alert?.zone ?? alert?.geometry,
+    );
+
+    if (!coordinates) {
+      continue;
+    }
 
     try {
-      const zoneLayer = leaflet.geoJSON(geometry, {
-        style: getZoneStyle(riskLevel),
-      });
+      const zoneLayer = leaflet.polygon(
+        coordinates,
+        getZoneStyle(alert.risk_level),
+      );
 
-      zoneLayer.zoneData = item;
+      zoneLayer.alertId = alert.id ?? null;
+      zoneLayer.alertData = alert;
+      zoneLayer.zoneData = alert.zone ?? alert.geometry ?? null;
+      zoneLayer.riskLevel = alert.risk_level ?? null;
+
       zoneLayer.addTo(layer);
     } catch {
-      // Una geometría inválida no debe impedir que se rendericen las demás.
+      /*
+       * Una zona inválida no debe impedir que se representen
+       * correctamente las demás alertas.
+       */
       continue;
     }
   }
