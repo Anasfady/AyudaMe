@@ -5,6 +5,7 @@
   "event_type": "flood",
   "risk_level": "high",
   "status": "active",
+  "date": "2026-09-01",
   "source": {
     "type": "mock"
   }

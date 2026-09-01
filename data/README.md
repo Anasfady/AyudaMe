@@ -7,7 +7,8 @@ emergencias reales.
 ## Archivos
 
 - `emergency-context.json` — contexto del escenario de emergencia mostrado en
-  el mapa del MVP. `source.type: "mock"` indica que es un dato de demo.
+  el mapa del MVP, incluida la fecha (`date`) del escenario.
+  `source.type: "mock"` indica que es un dato de demo.
 - `associations.mock.json` — array raíz con asociaciones/organizaciones
   sintéticas que ofrecen recursos. Los nombres, IDs y coordenadas son
   ficticios.
