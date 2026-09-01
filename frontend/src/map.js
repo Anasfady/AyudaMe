@@ -1,5 +1,5 @@
 /**
- * Nexo Emergency Map - Base Map Module (Persona 1: @Anas28)
+ * AyudaMe Emergency Map - Base Map Module (Persona 1: @Anas28)
  * Initializes the single shared Leaflet map instance.
  */
 
