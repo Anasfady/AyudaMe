@@ -1,0 +1,47 @@
+[
+  {
+    "id": "association-001",
+    "name": "Asociación Demo Agua Segura",
+    "latitude": 39.4699,
+    "longitude": -0.3763,
+    "status": "active",
+    "needs": [],
+    "available_resources": ["water"]
+  },
+  {
+    "id": "association-002",
+    "name": "Banco de Alimentos Demo Valencia",
+    "latitude": 39.4561,
+    "longitude": -0.3545,
+    "status": "active",
+    "needs": ["water"],
+    "available_resources": ["non_perishable_food"]
+  },
+  {
+    "id": "association-003",
+    "name": "Red Demo de Apoyo Infantil",
+    "latitude": "39.47",
+    "longitude": "-0.38",
+    "status": "active",
+    "needs": [],
+    "available_resources": ["baby_products"]
+  },
+  {
+    "id": "association-004",
+    "name": "Voluntariado Demo Riberas del Turia",
+    "latitude": 39.4831,
+    "longitude": -0.4012,
+    "status": "inactive",
+    "needs": ["non_perishable_food"],
+    "available_resources": []
+  },
+  {
+    "id": "association-005",
+    "name": "Punto Demo de Distribución Norte",
+    "latitude": 39.5019,
+    "longitude": -0.4123,
+    "status": "active",
+    "needs": ["baby_products"],
+    "available_resources": ["water", "non_perishable_food"]
+  }
+]
