@@ -1,0 +1,6 @@
+{
+  "title": "feat: capas de asociaciones/recursos (agua, alimentos, bebé)",
+  "body": "Añade la capa de asociaciones y recursos para el mapa (agua, alimentos no perecederos, productos de bebé).\n- Nuevo módulo: frontend/src/layers/aid.js (crea capas y marcadores con iconos SVG)\n- Nuevo init: frontend/src/init/aidLayersInit.js (carga datos y añade controles en el sidebar)\n- Actualiza mapa: frontend/pages/mapa.html para cargar el init\nUsa associationsDataService para cargar datos mock (data/associations.mock.json).",
+  "head": "feat/aid-layers",
+  "base": "main"
+}
