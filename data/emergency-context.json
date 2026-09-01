@@ -1,0 +1,11 @@
+{
+  "id": "emergency-context-001",
+  "name": "Demo Flood Scenario (Comunidad Valenciana)",
+  "country": "Spain",
+  "event_type": "flood",
+  "risk_level": "high",
+  "status": "active",
+  "source": {
+    "type": "mock"
+  }
+}
