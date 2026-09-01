@@ -110,4 +110,7 @@ test("isValidCoordinate valida rangos de latitud y longitud", () => {
   assert.equal(isValidCoordinate("hola", -90, 90), false);
   assert.equal(isValidCoordinate(null, -90, 90), false);
   assert.equal(isValidCoordinate(undefined, -180, 180), false);
+  assert.equal(isValidCoordinate(true, -90, 90), false);
+  assert.equal(isValidCoordinate([], -90, 90), false);
+  assert.equal(isValidCoordinate("   ", -90, 90), false);
 });

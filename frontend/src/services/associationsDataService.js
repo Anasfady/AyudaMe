@@ -9,11 +9,20 @@ const ALLOWED_CATEGORIES = ["water", "non_perishable_food", "baby_products"];
 const ALLOWED_STATUSES = ["active", "inactive"];
 
 // Accepts numbers or numeric strings ("39.42") but rejects anything that
-// doesn't resolve to a finite number inside [min, max].
+// doesn't resolve to a finite number inside [min, max] — including other
+// types Number() would silently coerce, like booleans or arrays.
 export function isValidCoordinate(value, min, max) {
+  if (typeof value !== "number" && typeof value !== "string") {
+    return false;
+  }
+
+  if (typeof value === "string" && value.trim() === "") {
+    return false;
+  }
+
   const number = Number(value);
-  return value !== null && value !== undefined && value !== "" &&
-    Number.isFinite(number) && number >= min && number <= max;
+
+  return Number.isFinite(number) && number >= min && number <= max;
 }
 
 function isNonEmptyString(value) {

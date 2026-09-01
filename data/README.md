@@ -75,3 +75,12 @@ Funciones principales:
 
 El dato normalizado es el que debe consumir la capa de recursos/asociaciones
 (fuera del alcance de este trabajo).
+
+### Ejecución local
+
+Para que `loadAssociations()` pueda acceder a `/data/associations.mock.json`,
+el servidor HTTP debe iniciarse desde la raíz del repositorio.
+
+```bash
+python3 -m http.server 8000
+```
