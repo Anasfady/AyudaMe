@@ -26,16 +26,16 @@ export const AID_CATEGORIES = [
 ];
 
 function getAssociationCategories(association) {
-  const needs = Array.isArray(association?.needs)
-    ? association.needs
-    : [];
-
-  const resources = Array.isArray(association?.availableResources)
+  return Array.isArray(association?.availableResources)
     ? association.availableResources
     : [];
-
-  return [...needs, ...resources];
 }
+
+const resources = Array.isArray(association?.availableResources)
+  ? association.availableResources
+  : [];
+
+return [...needs, ...resources];
 
 /**
  * Crea un manager de marcadores de asociaciones con soporte de

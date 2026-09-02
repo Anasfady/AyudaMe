@@ -20,6 +20,27 @@ function getFilterState() {
   return { showAll, categories };
 }
 
+function filterAssociations(
+  associations,
+  { showAll, categories },
+) {
+  if (showAll) {
+    return associations;
+  }
+
+  return associations.filter((association) => {
+    const resources = Array.isArray(
+      association?.availableResources,
+    )
+      ? association.availableResources
+      : [];
+
+    return resources.some((resource) =>
+      categories.includes(resource),
+    );
+  });
+}
+
 function wireFilterControls(manager) {
   const checkboxIds = [
     "aid-filter-all",
