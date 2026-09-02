@@ -84,6 +84,24 @@
       font-style: italic;
     }
 
+    /* Aid Category Filters */
+    #aid-filters {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      color: #333;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    #aid-filters label {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+    }
+
     /* Map Container */
     #map {
       flex: 1;
@@ -110,6 +128,25 @@
     <aside id="sidebar">
       <h2>Asociaciones</h2>
 
+      <div id="aid-filters">
+        <label>
+          <input type="checkbox" id="aid-filter-all" checked />
+          Mostrar todas
+        </label>
+        <label>
+          <input type="checkbox" id="aid-filter-water" />
+          💧 Agua
+        </label>
+        <label>
+          <input type="checkbox" id="aid-filter-non_perishable_food" />
+          🥫 Alimentos no perecederos
+        </label>
+        <label>
+          <input type="checkbox" id="aid-filter-baby_products" />
+          👶 Productos de bebé
+        </label>
+      </div>
+
       <div id="associations-list">
         <div class="nexo-empty-state">
           <p>Cargando asociaciones...</p>
@@ -130,6 +167,9 @@
 
   <!-- Associations Initialization -->
   <script type="module" src="../src/init/associationsInit.js"></script>
+
+  <!-- Emergency Context (DANA affected zone) -->
+  <script type="module" src="../src/emergencyContext.js"></script>
 
 </body>
 
