@@ -25,6 +25,7 @@ test("TEST 1 - registro válido se normaliza correctamente", () => {
   assert.deepEqual(result, {
     id: "association-001",
     name: "Asociación Demo",
+    municipality: null,
     lat: 39.42,
     lng: -0.38,
     status: "active",
