@@ -51,66 +51,6 @@ geocoder.on("markgeocode", function (e) {
     .openPopup();
 });
 
-// --- FILTER AND SORT CONTROL PANEL ---
-
-const customControls = L.control({ position: "topright" });
-
-customControls.onAdd = function (map) {
-  // Create the main container
-  const div = L.DomUtil.create("div", "custom-controls-container");
-
-  // Prevent map zooming/dragging when interacting with the UI
-  L.DomEvent.disableClickPropagation(div);
-  L.DomEvent.disableScrollPropagation(div);
-
-  // Inject HTML for buttons and hidden dropdown panels
-  div.innerHTML = `
-    <div class="control-buttons-row">
-      <button id="btn-filter" class="map-action-btn">Filtros ▼</button>
-      <button id="btn-sort" class="map-action-btn">Ordenar ▼</button>
-    </div>
-    
-    <!-- Filter Dropdown Panel -->
-    <div id="filter-dropdown" class="dropdown-panel" style="display: none;">
-      <div style="font-weight: bold; margin-bottom: 10px; font-family: sans-serif;">Filtros</div>
-      <div id="additional-fields-container">
-         <p style="font-size: 12px; color: #666; margin: 0; font-family: sans-serif;">Opciones próximamente...</p>
-      </div>
-    </div>
-
-    <!-- Sort Dropdown Panel -->
-    <div id="sort-dropdown" class="dropdown-panel" style="display: none;">
-      <div style="font-weight: bold; margin-bottom: 10px; font-family: sans-serif;">Ordenar por</div>
-      <select id="sort-select" style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-family: sans-serif;">
-        <option value="name_asc">Nombre (A-Z)</option>
-        <option value="urgency">Mayor urgencia</option>
-      </select>
-    </div>
-  `;
-
-  // Attach click events to toggle the panels
-  const btnFilter = div.querySelector("#btn-filter");
-  const btnSort = div.querySelector("#btn-sort");
-  const filterDropdown = div.querySelector("#filter-dropdown");
-  const sortDropdown = div.querySelector("#sort-dropdown");
-
-  btnFilter.addEventListener("click", () => {
-    // Toggle filter panel and ensure sort is closed
-    const isClosed = filterDropdown.style.display === "none";
-    filterDropdown.style.display = isClosed ? "block" : "none";
-    sortDropdown.style.display = "none";
-  });
-
-  btnSort.addEventListener("click", () => {
-    // Toggle sort panel and ensure filter is closed
-    const isClosed = sortDropdown.style.display === "none";
-    sortDropdown.style.display = isClosed ? "block" : "none";
-    filterDropdown.style.display = "none";
-  });
-
-  return div;
-};
-
 customControls.addTo(map);
 
 export { map };
