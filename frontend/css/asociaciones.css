@@ -1,0 +1,374 @@
+/*
+ * ==========================================
+ * AYUDAME - ASOCIACIONES
+ * ==========================================
+ *
+ * Estilos para:
+ * - Marcadores
+ * - Popups
+ * - Tarjetas
+ * - Panel lateral
+ * - Responsive
+ */
+
+
+/*
+ * ==========================================
+ * MARCADORES
+ * ==========================================
+ */
+
+.nexo-marker {
+    background: transparent;
+    border: none;
+}
+
+.nexo-marker-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+
+    font-size: 20px;
+    line-height: 1;
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.35);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.nexo-marker-icon:hover {
+    transform: scale(1.12);
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.45);
+}
+
+
+/*
+ * ==========================================
+ * POPUPS
+ * ==========================================
+ */
+
+.nexo-popup {
+    min-width: 230px;
+    max-width: 300px;
+
+    color: #222222;
+}
+
+.nexo-popup-header {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 8px;
+
+    margin-bottom: 8px;
+}
+
+.nexo-popup-icon {
+    flex-shrink: 0;
+
+    font-size: 20px;
+}
+
+.nexo-popup h3 {
+    margin: 0;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    line-height: 1.25;
+}
+
+.nexo-popup-location {
+    margin: 0 0 12px;
+
+    color: #555555;
+
+    font-size: 13px;
+}
+
+.nexo-popup-section {
+    margin-top: 10px;
+}
+
+.nexo-popup-section strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 13px;
+}
+
+
+/*
+ * ==========================================
+ * BADGES
+ * ==========================================
+ */
+
+.nexo-badge-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 5px;
+}
+
+.nexo-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+    padding: 4px 8px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    line-height: 1.2;
+}
+
+.nexo-badge-need {
+    color: #991b1b;
+
+    background-color: #fee2e2;
+
+    border: 1px solid #fecaca;
+}
+
+.nexo-badge-resource {
+    color: #166534;
+
+    background-color: #dcfce7;
+
+    border: 1px solid #bbf7d0;
+}
+
+.nexo-badge-empty {
+    color: #6b7280;
+
+    background-color: #f3f4f6;
+
+    border: 1px solid #e5e7eb;
+}
+
+
+/*
+ * ==========================================
+ * TARJETAS
+ * ==========================================
+ */
+
+.nexo-card {
+    background-color: #ffffff;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+
+    padding: 14px;
+
+    margin-bottom: 12px;
+
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.08);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.nexo-card:hover {
+    border-color: #cbd5e1;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.10);
+}
+
+.nexo-card-selected {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+.nexo-card-header {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+}
+
+.nexo-card-title {
+    margin: 0;
+
+    color: #1f2937;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    line-height: 1.25;
+}
+
+.nexo-card-location {
+    margin: 4px 0 0;
+
+    color: #6b7280;
+
+    font-size: 13px;
+}
+
+.nexo-card-section {
+    margin-top: 10px;
+}
+
+.nexo-card-section h4 {
+    margin: 0 0 6px;
+
+    color: #374151;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/*
+ * ==========================================
+ * ESTADO DE LA ASOCIACIÓN
+ * ==========================================
+ */
+
+.nexo-status {
+    flex-shrink: 0;
+
+    padding: 4px 7px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.nexo-status-active {
+    color: #166534;
+
+    background-color: #dcfce7;
+}
+
+.nexo-status-inactive {
+    color: #991b1b;
+
+    background-color: #fee2e2;
+}
+
+
+/*
+ * ==========================================
+ * ESTADO VACÍO
+ * ==========================================
+ */
+
+.nexo-empty-state {
+    padding: 25px 15px;
+
+    color: #6b7280;
+
+    text-align: center;
+
+    font-size: 14px;
+}
+
+.nexo-card-empty {
+    color: #6b7280;
+
+    text-align: center;
+}
+
+
+/*
+ * ==========================================
+ * PANEL LATERAL
+ * ==========================================
+ */
+
+#sidebar {
+    overflow-y: auto;
+}
+
+#associations-list {
+    width: 100%;
+}
+
+
+/*
+ * ==========================================
+ * RESPONSIVE - TABLET
+ * ==========================================
+ */
+
+@media (max-width: 768px) {
+    .nexo-card {
+        padding: 12px;
+    }
+
+    .nexo-card-title {
+        font-size: 15px;
+    }
+
+    .nexo-popup {
+        min-width: 200px;
+        max-width: 260px;
+    }
+
+    .nexo-marker-icon {
+        width: 40px;
+        height: 40px;
+
+        font-size: 18px;
+    }
+}
+
+
+/*
+ * ==========================================
+ * RESPONSIVE - MÓVIL
+ * ==========================================
+ */
+
+@media (max-width: 480px) {
+    .nexo-card-header {
+        flex-direction: column;
+    }
+
+    .nexo-status {
+        align-self: flex-start;
+    }
+
+    .nexo-popup {
+        min-width: 180px;
+        max-width: 230px;
+    }
+
+    .nexo-badge {
+        font-size: 11px;
+    }
+}

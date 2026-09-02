@@ -73,6 +73,7 @@ export function normalizeAssociation(raw) {
   return {
     id: raw.id,
     name: raw.name,
+    municipality: raw.municipality ?? raw.municipio ?? null,
     lat: Number(raw.latitude),
     lng: Number(raw.longitude),
     status: raw.status,
