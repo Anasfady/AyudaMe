@@ -1,37 +1,116 @@
 /**
- * AyudaMe Emergency Map - Base Map Module (Persona 1: @Anas28)
- * Initializes the single shared Leaflet map instance.
+ * AyudaMe Emergency Map - Base Map Module (Persona 1)
  */
 
-// 1. Define the geographical limits for Spain (including Canary & Balearic Islands)
-const spainBounds = L.latLngBounds(
-  [27.4, -18.5], // Southwest corner (Canary Islands)
-  [44.0, 4.4], // Northeast corner (Catalonia/Menorca)
-);
+const spainBounds = L.latLngBounds([27.4, -18.5], [44.0, 4.4]);
 
-// 2. Initialize Leaflet map with boundaries and zoom limits
 const map = L.map("map", {
-  center: [40.4168, -3.7038], // Centered on Madrid
-  zoom: 6, // Zoomed out slightly to show the country
-  minZoom: 5, // Prevent zooming out to the whole world
-  maxBounds: spainBounds, // Lock panning to Spain
-  maxBoundsViscosity: 1.0, // Make the boundaries solid (no elastic bouncing)
+  center: [40.4168, -3.7038], // Madrid coordinates
+  zoom: 6,
+  minZoom: 5,
+  maxBounds: spainBounds,
+  maxBoundsViscosity: 1.0,
   zoomControl: true,
 });
 
-// 3. Configure CartoDB.Voyager tile layer
-const CartoDB_Voyager = L.tileLayer(
-  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
-  {
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: "abcd",
-    maxZoom: 20,
-  },
-);
+// Use standard OpenStreetMap tiles (Free, no API key required)
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution:
+    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+}).addTo(map);
 
-// 4. Add tiles to the shared map
-CartoDB_Voyager.addTo(map);
+// Add the Search Bar (Geocoder)
+const geocoder = L.Control.geocoder({
+  defaultMarkGeocoder: false,
+  placeholder: "Buscar calle, municipio, C.P...",
+  geocoder: L.Control.Geocoder.nominatim({
+    geocodingQueryParams: {
+      countrycodes: "es", // Restricts search to Spain
+    },
+  }),
+}).addTo(map);
 
-// 5. Export single shared instance for downstream layers
+// A variable to keep track of the current search marker
+let currentSearchMarker = null;
+
+// Zoom to location and place a pin when a user searches
+geocoder.on("markgeocode", function (e) {
+  // 1. SIMPLIFIED BOUNDS: e.geocode.bbox is already a Leaflet bounds object!
+  map.fitBounds(e.geocode.bbox);
+
+  // 2. CLEAR PREVIOUS MARKER: Remove the old pin if a new search is made
+  if (currentSearchMarker) {
+    map.removeLayer(currentSearchMarker);
+  }
+
+  // 3. ADD VISUAL PIN: Show the user exactly what they searched for
+  currentSearchMarker = L.marker(e.geocode.center)
+    .addTo(map)
+    .bindPopup(e.geocode.name)
+    .openPopup();
+});
+
+// --- FILTER AND SORT CONTROL PANEL ---
+
+const customControls = L.control({ position: "topright" });
+
+customControls.onAdd = function (map) {
+  // Create the main container
+  const div = L.DomUtil.create("div", "custom-controls-container");
+
+  // Prevent map zooming/dragging when interacting with the UI
+  L.DomEvent.disableClickPropagation(div);
+  L.DomEvent.disableScrollPropagation(div);
+
+  // Inject HTML for buttons and hidden dropdown panels
+  div.innerHTML = `
+    <div class="control-buttons-row">
+      <button id="btn-filter" class="map-action-btn">Filtros ▼</button>
+      <button id="btn-sort" class="map-action-btn">Ordenar ▼</button>
+    </div>
+    
+    <!-- Filter Dropdown Panel -->
+    <div id="filter-dropdown" class="dropdown-panel" style="display: none;">
+      <div style="font-weight: bold; margin-bottom: 10px; font-family: sans-serif;">Filtros</div>
+      <div id="additional-fields-container">
+         <p style="font-size: 12px; color: #666; margin: 0; font-family: sans-serif;">Opciones próximamente...</p>
+      </div>
+    </div>
+
+    <!-- Sort Dropdown Panel -->
+    <div id="sort-dropdown" class="dropdown-panel" style="display: none;">
+      <div style="font-weight: bold; margin-bottom: 10px; font-family: sans-serif;">Ordenar por</div>
+      <select id="sort-select" style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-family: sans-serif;">
+        <option value="name_asc">Nombre (A-Z)</option>
+        <option value="urgency">Mayor urgencia</option>
+      </select>
+    </div>
+  `;
+
+  // Attach click events to toggle the panels
+  const btnFilter = div.querySelector("#btn-filter");
+  const btnSort = div.querySelector("#btn-sort");
+  const filterDropdown = div.querySelector("#filter-dropdown");
+  const sortDropdown = div.querySelector("#sort-dropdown");
+
+  btnFilter.addEventListener("click", () => {
+    // Toggle filter panel and ensure sort is closed
+    const isClosed = filterDropdown.style.display === "none";
+    filterDropdown.style.display = isClosed ? "block" : "none";
+    sortDropdown.style.display = "none";
+  });
+
+  btnSort.addEventListener("click", () => {
+    // Toggle sort panel and ensure filter is closed
+    const isClosed = sortDropdown.style.display === "none";
+    sortDropdown.style.display = isClosed ? "block" : "none";
+    filterDropdown.style.display = "none";
+  });
+
+  return div;
+};
+
+customControls.addTo(map);
+
 export { map };
