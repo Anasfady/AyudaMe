@@ -44,7 +44,9 @@ function filterAssociations(
 function wireFilterControls(manager, associations, container) {
   const checkboxIds = [
     "aid-filter-all",
-    ...AID_CATEGORIES.map((category) => `aid-filter-${category}`),
+    ...AID_CATEGORIES.map(
+      (category) => `aid-filter-${category}`,
+    ),
   ];
 
   for (const id of checkboxIds) {
@@ -55,6 +57,27 @@ function wireFilterControls(manager, associations, container) {
     }
 
     checkbox.addEventListener("change", () => {
+      if (id !== "aid-filter-all" && checkbox.checked) {
+        const showAllCheckbox =
+          document.getElementById("aid-filter-all");
+
+        if (showAllCheckbox) {
+          showAllCheckbox.checked = false;
+        }
+      }
+
+      if (id === "aid-filter-all" && checkbox.checked) {
+        for (const category of AID_CATEGORIES) {
+          const categoryCheckbox = document.getElementById(
+            `aid-filter-${category}`,
+          );
+
+          if (categoryCheckbox) {
+            categoryCheckbox.checked = false;
+          }
+        }
+      }
+
       const filterState = getFilterState();
 
       manager.updateVisibility(map, filterState);
