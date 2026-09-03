@@ -13,44 +13,19 @@ const map = L.map("map", {
   zoomControl: true,
 });
 
-// Use standard OpenStreetMap tiles (Free, no API key required)
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  attribution:
-    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-}).addTo(map);
+// 3. Configure CartoDB.Voyager tile layer
+const CartoDB_Voyager = L.tileLayer(
+  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+  {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: "abcd",
+    maxZoom: 20,
+  },
+);
 
-// Add the Search Bar (Geocoder)
-const geocoder = L.Control.geocoder({
-  defaultMarkGeocoder: false,
-  placeholder: "Buscar calle, municipio, C.P...",
-  geocoder: L.Control.Geocoder.nominatim({
-    geocodingQueryParams: {
-      countrycodes: "es", // Restricts search to Spain
-    },
-  }),
-}).addTo(map);
+// 4. Add tiles to the shared map
+CartoDB_Voyager.addTo(map);
 
-// A variable to keep track of the current search marker
-let currentSearchMarker = null;
-
-// Zoom to location and place a pin when a user searches
-geocoder.on("markgeocode", function (e) {
-  // 1. SIMPLIFIED BOUNDS: e.geocode.bbox is already a Leaflet bounds object!
-  map.fitBounds(e.geocode.bbox);
-
-  // 2. CLEAR PREVIOUS MARKER: Remove the old pin if a new search is made
-  if (currentSearchMarker) {
-    map.removeLayer(currentSearchMarker);
-  }
-
-  // 3. ADD VISUAL PIN: Show the user exactly what they searched for
-  currentSearchMarker = L.marker(e.geocode.center)
-    .addTo(map)
-    .bindPopup(e.geocode.name)
-    .openPopup();
-});
-
-customControls.addTo(map);
-
+// 5. Export single shared instance for downstream layers
 export { map };
