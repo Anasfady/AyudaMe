@@ -20,7 +20,28 @@ function getFilterState() {
   return { showAll, categories };
 }
 
-function wireFilterControls(manager) {
+function filterAssociations(
+  associations,
+  { showAll, categories },
+) {
+  if (showAll) {
+    return associations;
+  }
+
+  return associations.filter((association) => {
+    const resources = Array.isArray(
+      association?.availableResources,
+    )
+      ? association.availableResources
+      : [];
+
+    return resources.some((resource) =>
+      categories.includes(resource),
+    );
+  });
+}
+
+function wireFilterControls(manager, associations, container) {
   const checkboxIds = [
     "aid-filter-all",
     ...AID_CATEGORIES.map((category) => `aid-filter-${category}`),
@@ -34,7 +55,19 @@ function wireFilterControls(manager) {
     }
 
     checkbox.addEventListener("change", () => {
-      manager.updateVisibility(map, getFilterState());
+      const filterState = getFilterState();
+
+      manager.updateVisibility(map, filterState);
+
+      const filteredAssociations = filterAssociations(
+        associations,
+        filterState,
+      );
+
+      renderAssociationCards(
+        filteredAssociations,
+        container,
+      );
     });
   }
 }
@@ -59,7 +92,9 @@ async function initAssociations() {
     window.__AyudaMeRefreshAidVisibility = () =>
       manager.updateVisibility(map, getFilterState());
 
-    manager.updateVisibility(map, getFilterState());
+    const filterState = getFilterState();
+
+    manager.updateVisibility(map, filterState);
 
     if (
       window.__AyudaMeActiveScenarioId &&
@@ -72,9 +107,17 @@ async function initAssociations() {
       });
     }
 
-    wireFilterControls(manager);
 
     renderAssociationCards(
+      filterAssociations(
+        associations,
+        filterState,
+      ),
+      container,
+    );
+
+    wireFilterControls(
+      manager,
       associations,
       container,
     );
@@ -87,7 +130,7 @@ async function initAssociations() {
     container.innerHTML = `
       <div class="nexo-empty-state">
         <p>
-          No se pudieron cargar las asociaciones.
+          No se pudieron cargar las asociaciones:
         </p>
       </div>
     `;
