@@ -1,5 +1,5 @@
 # AyudaMe 🆘
-<p align="center"><img src="img/ayudame-logo.png" alt="AyudaMe logo" width="600"/></p> 
+<p align="center"><img src="img/ayudame-logo.png" alt="AyudaMe logo" width="1000"/></p> 
 Una plataforma de emergencia interactiva para coordinar y localizar recursos de ayuda en zonas afectadas por desastres naturales. Basada en mapas geográficos y gestión de asociaciones humanitaria[...]
 
 🔗 **[Accede a la aplicación en producción](https://ayudame-production.up.railway.app/)**
