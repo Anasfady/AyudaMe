@@ -1,0 +1,39 @@
+[
+  {
+    "id": "dana-valencia-2024",
+    "name": "DANA Valencia 2024",
+    "location": "Valencia",
+    "event_type": "flood",
+    "status": "historical",
+    "data_type": "real_context_mock_operations",
+    "description": "Escenario histórico basado en la DANA de Valencia de 2024. El contexto y la geometría son reales; los datos operativos de asociaciones, recursos y necesidades son de demostración."
+  },
+  {
+    "id": "sierra-verde-demo",
+    "name": "Incendio forestal — Sierra Verde",
+    "location": "Málaga",
+    "event_type": "wildfire",
+    "status": "demo",
+    "data_type": "mock",
+    "description": "Escenario ficticio de demostración para mostrar la capacidad de AyudaMe de trabajar con distintos tipos de emergencia.",
+    "map_view": {
+      "latitude": 36.7213,
+      "longitude": -4.4214,
+      "zoom": 11
+    }
+  },
+  {
+    "id": "ribera-central-demo",
+    "name": "Inundación urbana — Ribera Central",
+    "location": "Zaragoza",
+    "event_type": "flood",
+    "status": "demo",
+    "data_type": "mock",
+    "description": "Escenario ficticio de demostración para mostrar la capacidad de AyudaMe de trabajar con distintos territorios y emergencias.",
+    "map_view": {
+      "latitude": 41.6488,
+      "longitude": -0.8891,
+      "zoom": 11
+    }
+  }
+]

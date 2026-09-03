@@ -88,10 +88,25 @@ async function initAssociations() {
       );
 
     const manager = createAidManager(associations);
+    window.__AyudaMeAidManager = manager;
+    window.__AyudaMeRefreshAidVisibility = () =>
+      manager.updateVisibility(map, getFilterState());
 
     const filterState = getFilterState();
 
     manager.updateVisibility(map, filterState);
+
+    if (
+      window.__AyudaMeActiveScenarioId &&
+      window.__AyudaMeActiveScenarioId !==
+        "dana-valencia-2024"
+    ) {
+      manager.updateVisibility(map, {
+        showAll: false,
+        categories: [],
+      });
+    }
+
 
     renderAssociationCards(
       filterAssociations(
