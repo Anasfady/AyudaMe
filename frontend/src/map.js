@@ -19,19 +19,19 @@ const map = L.map("map", {
   zoomControl: true,
 });
 
-// 3. Configure CartoDB.Voyager tile layer
-const CartoDB_Voyager = L.tileLayer(
-  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+// 3. Configure OpenStreetMap tile layer (no API key required)
+const OSM_Standard = L.tileLayer(
+  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
   {
     attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: "abcd",
-    maxZoom: 20,
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    subdomains: "abc",
+    maxZoom: 19,
   },
 );
 
 // 4. Add tiles to the shared map
-CartoDB_Voyager.addTo(map);
+OSM_Standard.addTo(map);
 
 // 5. Export single shared instance for downstream layers
 export { map };
