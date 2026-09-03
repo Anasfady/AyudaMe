@@ -73,8 +73,8 @@ function restoreAssociationMarkers() {
 }
 
 function setScenarioNoticeVisible(visible) {
-  const notice = document.querySelector(
-    ".scenario-list__notice",
+  const notice = document.getElementById(
+    "scenario-data-notice",
   );
 
   if (notice) {
@@ -90,9 +90,8 @@ function renderDemoInfo(scenario) {
   removeDemoInfo();
 
   const sidebar = document.getElementById("sidebar");
-  const scenarioList = document.getElementById("scenario-list");
 
-  if (!sidebar || !scenarioList) {
+  if (!sidebar) {
     return;
   }
 
@@ -126,10 +125,14 @@ function renderDemoInfo(scenario) {
     notice,
   );
 
-  scenarioList.insertAdjacentElement(
-    "afterend",
-    section,
-  );
+  const associationsTitle =
+    sidebar.querySelector(":scope > h2");
+
+  if (associationsTitle) {
+    sidebar.insertBefore(section, associationsTitle);
+  } else {
+    sidebar.prepend(section);
+  }
 }
 
 function setActiveScenarioCard(scenarioId) {
@@ -244,9 +247,12 @@ function createScenarioCard(scenario, isActive) {
 }
 
 function renderScenarios(scenarios) {
+  const navigation = document.getElementById(
+    "scenario-navigation",
+  );
   const sidebar = document.getElementById("sidebar");
 
-  if (!sidebar) {
+  if (!navigation || !sidebar) {
     return;
   }
 
@@ -255,11 +261,6 @@ function renderScenarios(scenarios) {
 
   const title = document.createElement("h2");
   title.textContent = "Escenarios";
-
-  const description = document.createElement("p");
-  description.className = "scenario-list__description";
-  description.textContent =
-    "Explora cómo AyudaMe puede adaptarse a distintos contextos de emergencia.";
 
   const cards = document.createElement("div");
   cards.className = "scenario-list__cards";
@@ -273,19 +274,27 @@ function renderScenarios(scenarios) {
     );
   }
 
+  section.append(title, cards);
+  navigation.replaceChildren(section);
+
+  document.getElementById(
+    "scenario-data-notice",
+  )?.remove();
+
   const notice = document.createElement("p");
+  notice.id = "scenario-data-notice";
   notice.className = "scenario-list__notice";
   notice.textContent =
-    "La DANA utiliza contexto y geometría históricos reales. Los datos operativos y los demás escenarios son de demostración.";
+    "Contexto y geometría DANA: reales · Datos operativos: demostración.";
 
-  section.append(
-    title,
-    description,
-    cards,
-    notice,
-  );
+  const associationsTitle =
+    sidebar.querySelector(":scope > h2");
 
-  sidebar.prepend(section);
+  if (associationsTitle) {
+    sidebar.insertBefore(notice, associationsTitle);
+  } else {
+    sidebar.prepend(notice);
+  }
 }
 
 async function initScenarioList() {
