@@ -218,7 +218,15 @@ El diseño es completamente responsive:
 
 Por especificar
 
-## 👥 Contribuciones
+## 👥 Autores y Colaboradores
+
+- **[@Anasfady](https://github.com/Anasfady)** - Creador y Mantenedor Principal
+- **[@adryeli](https://github.com/adryeli)** - Desarrollo Backend & Integración
+- **[@drojas-7u7](https://github.com/drojas-7u7)** - Desarrollo Frontend & UI
+- **[@Isabela-Tellez](https://github.com/Isabela-Tellez)** - Diseño & Componentes
+- **[@yohperez](https://github.com/yohperez)** - Coordinación & Documentación
+
+## 🤝 Contribuciones
 
 Las contribuciones son bienvenidas. Para cambios importantes:
 1. Fork el proyecto
@@ -229,7 +237,7 @@ Las contribuciones son bienvenidas. Para cambios importantes:
 
 ## 📧 Contacto
 
-Autor: [@Anasfady](https://github.com/Anasfady)
+Para preguntas, sugerencias o reportar bugs, abre un [issue](https://github.com/Anasfady/AyudaMe/issues) en el repositorio.
 
 ---
 
