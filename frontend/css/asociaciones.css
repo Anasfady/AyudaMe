@@ -358,3 +358,17 @@
     font-size: 11px;
   }
 }
+.app-logo {
+  max-width: 180px; /* Adjust this value to make the logo larger or smaller */
+  height: auto;
+  display: block;
+  margin: 10px 15px; /* Adds a little breathing room around the logo */
+}
+
+/* Optional: If you wrap it in a header container with a dark background to match the logo */
+.app-header {
+  background-color: #1a1a1a; /* Matches the dark background of your logo */
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
