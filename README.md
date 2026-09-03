@@ -8,11 +8,19 @@ Una plataforma de emergencia interactiva para coordinar y localizar recursos de 
 
 **AyudaMe** es una aplicación web que proporciona:
 
-- 🗺️ **Mapa interactivo** en tiempo real con límites geográficos de España
+- 🗺️ **Mapa interactivo** con límites geográficos de España, basado en datos JSON/GeoJSON
 - 🏥 **Localización de asociaciones humanitarias** y puntos de ayuda
 - 📊 **Filtrado de recursos** por categoría (agua, alimentos, productos para bebés, etc.)
-- 🚨 **Visualización de zonas de emergencia** (DANA Valencia 2024)
+- 🚨 **Visualización de zonas de emergencia**, con soporte para múltiples tipos de emergencia y escenarios (no solo DANA)
 - 📍 **Contexto de emergencia** con información de fuentes oficiales (Copernicus EMS)
+
+### 📌 Datos reales vs. datos de demostración
+
+Es importante distinguir qué partes de la aplicación usan datos reales y cuáles son de demostración:
+
+- **Reales**: el contexto de emergencia y la geometría de la DANA Valencia 2024 provienen de Copernicus EMS.
+- **Simulados (mock)**: las asociaciones, los recursos disponibles y las necesidades mostradas en el mapa.
+- **Escenarios ficticios**: *Sierra Verde* y *Ribera Central* son escenarios de demostración creados para mostrar la capacidad multiemergencia de la plataforma, no eventos reales.
 
 ## 🏗️ Estructura del Proyecto
 
@@ -41,7 +49,7 @@ AyudaMe/
 │   └── associations.mock.json    # Asociaciones simuladas
 ├── test/                          # Tests
 ├── requirements.txt               # Dependencias Python
-├── Procfile                       # Configuración Heroku
+├── Procfile                       # Configuración de despliegue (Railway)
 └── README.md
 ```
 
@@ -110,13 +118,13 @@ Sirve archivos estáticos:
 ### Frontend
 
 **`frontend/src/map.js`** - Inicialización del mapa
-- Carga Leaflet con tiles de CartoDB Voyager
+- Carga Leaflet con tiles de OpenStreetMap (desde [PR #16](https://github.com/Anasfady/AyudaMe/pull/16))
 - Define límites geográficos (España)
 - Exporta instancia única del mapa
 
 **`frontend/src/emergencyContext.js`** - Contexto de emergencia
 - Carga geometría de zonas afectadas desde `/data/emergency-context.json`
-- Dibuja polígonos en el mapa (DANA Valencia 2024)
+- Dibuja polígonos en el mapa según el escenario activo (DANA Valencia 2024, y otros escenarios como Sierra Verde y Ribera Central)
 - Muestra información en la barra lateral
 
 **`frontend/src/scenarioList.js`** - Catálogo de escenarios
@@ -165,7 +173,7 @@ Categorías soportadas: `water`, `non_perishable_food`, `baby_products`
 
 - **Backend**: FastAPI, Uvicorn
 - **Frontend**: Vanilla JavaScript (ES6 modules), HTML5, CSS3
-- **Mapas**: Leaflet.js, CartoDB Voyager tiles, GeoJSON
+- **Mapas**: Leaflet.js, OpenStreetMap tiles, GeoJSON
 - **Datos**: JSON
 - **Despliegue**: Railway
 
@@ -214,7 +222,7 @@ El diseño es completamente responsive:
 | Mapa no carga | Verifica que Leaflet.js está disponible en CDN |
 | Geometría de emergencia no aparece | Comprueba que `/data/emergency-context.json` existe |
 | Asociaciones no se muestran | Verifica que `/data/associations.mock.json` está disponible |
-| Error CORS en API | Verifica que FastAPI está configurado con middleware CORS |
+| Error CORS en API | Actualmente no hay middleware CORS configurado en FastAPI; si accedes desde otro origen, tendrás que añadirlo (`fastapi.middleware.cors.CORSMiddleware`) |
 
 ## 📜 Licencia
 
