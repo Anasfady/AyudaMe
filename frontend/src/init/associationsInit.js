@@ -55,8 +55,23 @@ async function initAssociations() {
       );
 
     const manager = createAidManager(associations);
+    window.__AyudaMeAidManager = manager;
+    window.__AyudaMeRefreshAidVisibility = () =>
+      manager.updateVisibility(map, getFilterState());
 
     manager.updateVisibility(map, getFilterState());
+
+    if (
+      window.__AyudaMeActiveScenarioId &&
+      window.__AyudaMeActiveScenarioId !==
+        "dana-valencia-2024"
+    ) {
+      manager.updateVisibility(map, {
+        showAll: false,
+        categories: [],
+      });
+    }
+
     wireFilterControls(manager);
 
     renderAssociationCards(
