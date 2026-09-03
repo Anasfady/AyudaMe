@@ -8,12 +8,10 @@
  *
  * Reutiliza directamente los marcadores y popups de
  * components/markers.js y components/popups.js: no crea una
- * implementación paralela (ver discusión de integración entre
- * PR #6 y PR #7 en la revisión original).
+ * implementación paralela.
  *
  * Cada asociación tiene un único marcador. Si varios filtros
- * coinciden a la vez (por ejemplo "Mostrar todas" y "Agua"), el
- * marcador no se duplica.
+ * coinciden a la vez, el marcador no se duplica.
  */
 
 import { createAssociationMarker } from "../components/markers.js";
@@ -30,12 +28,6 @@ function getAssociationCategories(association) {
     ? association.availableResources
     : [];
 }
-
-const resources = Array.isArray(association?.availableResources)
-  ? association.availableResources
-  : [];
-
-return [...needs, ...resources];
 
 /**
  * Crea un manager de marcadores de asociaciones con soporte de
@@ -79,12 +71,18 @@ export function createAidManager(associations = [], options = {}) {
    * - categories: lista de categorías activas; un marcador se
    *   muestra si tiene al menos una categoría en común.
    */
-  function updateVisibility(map, { showAll = true, categories = [] } = {}) {
+  function updateVisibility(
+    map,
+    { showAll = true, categories = [] } = {},
+  ) {
     if (!map) {
       return;
     }
 
-    for (const { marker, categories: markerCategories } of entries) {
+    for (const {
+      marker,
+      categories: markerCategories,
+    } of entries) {
       const matchesCategory = markerCategories.some((category) =>
         categories.includes(category),
       );
