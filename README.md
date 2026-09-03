@@ -1,6 +1,8 @@
 # AyudaMe 🆘
 
-Una plataforma de emergencia interactiva para coordinar y localizar recursos de ayuda en zonas afectadas por desastres naturales. Basada en mapas geográficos y gestión de asociaciones humanitarias.
+Una plataforma de emergencia interactiva para coordinar y localizar recursos de ayuda en zonas afectadas por desastres naturales. Basada en mapas geográficos y gestión de asociaciones humanitaria[...]
+
+🔗 **[Accede a la aplicación en producción](https://ayudame-production.up.railway.app/)**
 
 ## 📋 Descripción
 
@@ -73,15 +75,14 @@ uvicorn app.main:app --reload
 
 La aplicación estará disponible en `http://localhost:8000`
 
-#### Producción (Heroku)
-```bash
-heroku create
-git push heroku main
-```
+#### Producción (Railway)
+El repositorio está configurado para desplegarse automáticamente en Railway. La aplicación en producción está disponible en:
+
+🔗 **[https://ayudame-production.up.railway.app/](https://ayudame-production.up.railway.app/)**
 
 ## 📖 Uso
 
-1. Accede a la aplicación en `http://localhost:8000`
+1. Accede a la aplicación en `http://localhost:8000` (desarrollo) o en el [enlace de producción](https://ayudame-production.up.railway.app/)
 2. Se abrirá automáticamente el mapa interactivo centrado en España
 3. **Filtros de asociaciones**: Selecciona las categorías de ayuda que deseas visualizar
    - 💧 Agua
@@ -166,6 +167,7 @@ Categorías soportadas: `water`, `non_perishable_food`, `baby_products`
 - **Frontend**: Vanilla JavaScript (ES6 modules), HTML5, CSS3
 - **Mapas**: Leaflet.js, CartoDB Voyager tiles, GeoJSON
 - **Datos**: JSON
+- **Despliegue**: Railway
 
 ## 🔧 Desarrollo
 
@@ -225,6 +227,7 @@ Por especificar
 - **[@drojas-7u7](https://github.com/drojas-7u7)** - Desarrollo Frontend & UI
 - **[@Isabela-Tellez](https://github.com/Isabela-Tellez)** - Diseño & Componentes
 - **[@yohperez](https://github.com/yohperez)** - Coordinación & Documentación
+- **[@5nhn007](https://github.com/5nhn007)** - Testing & QA
 
 ## 🤝 Contribuciones
 
