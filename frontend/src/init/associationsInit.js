@@ -1,52 +1,22 @@
 import { map } from "../map.js";
 import { loadAssociations } from "../services/associationsDataService.js";
-import {
-  createAidManager,
-  AID_CATEGORIES,
-} from "../layers/aid.js";
-import {
-  renderAssociationCards,
-} from "../components/associationCard.js";
+import { createAidManager, AID_CATEGORIES } from "../layers/aid.js";
+import { renderAssociationCards } from "../components/associationCard.js";
 
 function getFilterState() {
-  const showAll =
-    document.getElementById("aid-filter-all")?.checked ?? true;
+  const showAll = document.getElementById("aid-filter-all")?.checked ?? true;
 
   const categories = AID_CATEGORIES.filter(
-    (category) =>
-      document.getElementById(`aid-filter-${category}`)?.checked,
+    (category) => document.getElementById(`aid-filter-${category}`)?.checked,
   );
 
   return { showAll, categories };
 }
 
-function filterAssociations(
-  associations,
-  { showAll, categories },
-) {
-  if (showAll) {
-    return associations;
-  }
-
-  return associations.filter((association) => {
-    const resources = Array.isArray(
-      association?.availableResources,
-    )
-      ? association.availableResources
-      : [];
-
-    return resources.some((resource) =>
-      categories.includes(resource),
-    );
-  });
-}
-
-function wireFilterControls(manager, associations, container) {
+function wireFilterControls(manager) {
   const checkboxIds = [
     "aid-filter-all",
-    ...AID_CATEGORIES.map(
-      (category) => `aid-filter-${category}`,
-    ),
+    ...AID_CATEGORIES.map((category) => `aid-filter-${category}`),
   ];
 
   for (const id of checkboxIds) {
@@ -57,98 +27,29 @@ function wireFilterControls(manager, associations, container) {
     }
 
     checkbox.addEventListener("change", () => {
-      if (id !== "aid-filter-all" && checkbox.checked) {
-        const showAllCheckbox =
-          document.getElementById("aid-filter-all");
-
-        if (showAllCheckbox) {
-          showAllCheckbox.checked = false;
-        }
-      }
-
-      if (id === "aid-filter-all" && checkbox.checked) {
-        for (const category of AID_CATEGORIES) {
-          const categoryCheckbox = document.getElementById(
-            `aid-filter-${category}`,
-          );
-
-          if (categoryCheckbox) {
-            categoryCheckbox.checked = false;
-          }
-        }
-      }
-
-      const filterState = getFilterState();
-
-      manager.updateVisibility(map, filterState);
-
-      const filteredAssociations = filterAssociations(
-        associations,
-        filterState,
-      );
-
-      renderAssociationCards(
-        filteredAssociations,
-        container,
-      );
+      manager.updateVisibility(map, getFilterState());
     });
   }
 }
 
 async function initAssociations() {
-  const container = document.getElementById(
-    "associations-list",
-  );
+  const container = document.getElementById("associations-list");
 
   if (!container) {
     return;
   }
 
   try {
-    const associations =
-      await loadAssociations(
-        "/data/associations.mock.json",
-      );
+    const associations = await loadAssociations("/data/associations.mock.json");
 
     const manager = createAidManager(associations);
-    window.__AyudaMeAidManager = manager;
-    window.__AyudaMeRefreshAidVisibility = () =>
-      manager.updateVisibility(map, getFilterState());
 
-    const filterState = getFilterState();
+    manager.updateVisibility(map, getFilterState());
+    wireFilterControls(manager);
 
-    manager.updateVisibility(map, filterState);
-
-    if (
-      window.__AyudaMeActiveScenarioId &&
-      window.__AyudaMeActiveScenarioId !==
-        "dana-valencia-2024"
-    ) {
-      manager.updateVisibility(map, {
-        showAll: false,
-        categories: [],
-      });
-    }
-
-
-    renderAssociationCards(
-      filterAssociations(
-        associations,
-        filterState,
-      ),
-      container,
-    );
-
-    wireFilterControls(
-      manager,
-      associations,
-      container,
-    );
+    renderAssociationCards(associations, container);
   } catch (error) {
-    console.error(
-      "No se pudieron cargar las asociaciones:",
-      error,
-    );
+    console.error("No se pudieron cargar las asociaciones:", error);
 
     container.innerHTML = `
       <div class="nexo-empty-state">
@@ -161,10 +62,7 @@ async function initAssociations() {
 }
 
 if (document.readyState === "loading") {
-  document.addEventListener(
-    "DOMContentLoaded",
-    initAssociations,
-  );
+  document.addEventListener("DOMContentLoaded", initAssociations);
 } else {
   initAssociations();
 }

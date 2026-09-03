@@ -147,7 +147,7 @@
 <body>
   <!-- UI Navigation -->
   <header>
-    <h1>AyudaMe</h1>
+    <img src="/frontend/img/image.png" alt="AyudaMe Logo" class="app-logo">
 
     <nav
       id="scenario-navigation"
@@ -215,4 +215,26 @@
 
 </body>
 
+    <main>
+      <aside id="sidebar">
+        <h2>Asociaciones</h2>
+        <div id="associations-list">
+          <div class="nexo-empty-state"><p>Cargando asociaciones...</p></div>
+        </div>
+      </aside>
+      <div id="map"></div>
+    </main>
+
+    <!-- 3. CORE LEAFLET JS (Restored - MUST come before Geocoder) -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      crossorigin=""
+    ></script>
+
+    <!-- 4. GEOCODER JS -->
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+    <script type="module" src="../src/map.js"></script>
+    <script type="module" src="../src/init/associationsInit.js"></script>
+  </body>
 </html>
