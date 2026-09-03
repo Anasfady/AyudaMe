@@ -11,6 +11,7 @@
  * - Responsive
  */
 
+
 /*
  * ==========================================
  * MARCADORES
@@ -18,38 +19,41 @@
  */
 
 .nexo-marker {
-  background: transparent;
-  border: none;
+    background: transparent;
+    border: none;
 }
 
 .nexo-marker-icon {
-  width: 42px;
-  height: 42px;
+    width: 42px;
+    height: 42px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  border: 3px solid #ffffff;
-  border-radius: 50%;
+    border: 3px solid #ffffff;
+    border-radius: 50%;
 
-  font-size: 20px;
-  line-height: 1;
+    font-size: 20px;
+    line-height: 1;
 
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.35);
 
-  cursor: pointer;
+    cursor: pointer;
 
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .nexo-marker-icon:hover {
-  transform: scale(1.12);
+    transform: scale(1.12);
 
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.45);
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.45);
 }
+
 
 /*
  * ==========================================
@@ -58,55 +62,56 @@
  */
 
 .nexo-popup {
-  min-width: 230px;
-  max-width: 300px;
+    min-width: 230px;
+    max-width: 300px;
 
-  color: #222222;
+    color: #222222;
 }
 
 .nexo-popup-header {
-  display: flex;
-  align-items: flex-start;
+    display: flex;
+    align-items: flex-start;
 
-  gap: 8px;
+    gap: 8px;
 
-  margin-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 .nexo-popup-icon {
-  flex-shrink: 0;
+    flex-shrink: 0;
 
-  font-size: 20px;
+    font-size: 20px;
 }
 
 .nexo-popup h3 {
-  margin: 0;
+    margin: 0;
 
-  font-size: 17px;
-  font-weight: 700;
+    font-size: 17px;
+    font-weight: 700;
 
-  line-height: 1.25;
+    line-height: 1.25;
 }
 
 .nexo-popup-location {
-  margin: 0 0 12px;
+    margin: 0 0 12px;
 
-  color: #555555;
+    color: #555555;
 
-  font-size: 13px;
+    font-size: 13px;
 }
 
 .nexo-popup-section {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
 .nexo-popup-section strong {
-  display: block;
+    display: block;
 
-  margin-bottom: 5px;
+    margin-bottom: 5px;
 
-  font-size: 13px;
+    font-size: 13px;
 }
+
 
 /*
  * ==========================================
@@ -115,53 +120,54 @@
  */
 
 .nexo-badge-list {
-  display: flex;
+    display: flex;
 
-  flex-wrap: wrap;
+    flex-wrap: wrap;
 
-  gap: 5px;
+    gap: 5px;
 }
 
 .nexo-badge {
-  display: inline-flex;
+    display: inline-flex;
 
-  align-items: center;
+    align-items: center;
 
-  gap: 4px;
+    gap: 4px;
 
-  padding: 4px 8px;
+    padding: 4px 8px;
 
-  border-radius: 999px;
+    border-radius: 999px;
 
-  font-size: 12px;
-  font-weight: 600;
+    font-size: 12px;
+    font-weight: 600;
 
-  line-height: 1.2;
+    line-height: 1.2;
 }
 
 .nexo-badge-need {
-  color: #991b1b;
+    color: #991b1b;
 
-  background-color: #fee2e2;
+    background-color: #fee2e2;
 
-  border: 1px solid #fecaca;
+    border: 1px solid #fecaca;
 }
 
 .nexo-badge-resource {
-  color: #166534;
+    color: #166534;
 
-  background-color: #dcfce7;
+    background-color: #dcfce7;
 
-  border: 1px solid #bbf7d0;
+    border: 1px solid #bbf7d0;
 }
 
 .nexo-badge-empty {
-  color: #6b7280;
+    color: #6b7280;
 
-  background-color: #f3f4f6;
+    background-color: #f3f4f6;
 
-  border: 1px solid #e5e7eb;
+    border: 1px solid #e5e7eb;
 }
+
 
 /*
  * ==========================================
@@ -170,76 +176,80 @@
  */
 
 .nexo-card {
-  background-color: #ffffff;
+    background-color: #ffffff;
 
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
 
-  padding: 14px;
+    padding: 14px;
 
-  margin-bottom: 12px;
+    margin-bottom: 12px;
 
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.08);
 
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .nexo-card:hover {
-  border-color: #cbd5e1;
+    border-color: #cbd5e1;
 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.10);
 }
 
 .nexo-card-selected {
-  border-color: #2563eb;
+    border-color: #2563eb;
 
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+    box-shadow:
+        0 0 0 2px rgba(37, 99, 235, 0.15);
 }
 
 .nexo-card-header {
-  display: flex;
+    display: flex;
 
-  align-items: flex-start;
-  justify-content: space-between;
+    align-items: flex-start;
+    justify-content: space-between;
 
-  gap: 10px;
+    gap: 10px;
 
-  margin-bottom: 12px;
+    margin-bottom: 12px;
 }
 
 .nexo-card-title {
-  margin: 0;
+    margin: 0;
 
-  color: #1f2937;
+    color: #1f2937;
 
-  font-size: 16px;
-  font-weight: 700;
+    font-size: 16px;
+    font-weight: 700;
 
-  line-height: 1.25;
+    line-height: 1.25;
 }
 
 .nexo-card-location {
-  margin: 4px 0 0;
+    margin: 4px 0 0;
 
-  color: #6b7280;
+    color: #6b7280;
 
-  font-size: 13px;
+    font-size: 13px;
 }
 
 .nexo-card-section {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
 .nexo-card-section h4 {
-  margin: 0 0 6px;
+    margin: 0 0 6px;
 
-  color: #374151;
+    color: #374151;
 
-  font-size: 13px;
-  font-weight: 700;
+    font-size: 13px;
+    font-weight: 700;
 }
+
 
 /*
  * ==========================================
@@ -248,27 +258,28 @@
  */
 
 .nexo-status {
-  flex-shrink: 0;
+    flex-shrink: 0;
 
-  padding: 4px 7px;
+    padding: 4px 7px;
 
-  border-radius: 999px;
+    border-radius: 999px;
 
-  font-size: 11px;
-  font-weight: 700;
+    font-size: 11px;
+    font-weight: 700;
 }
 
 .nexo-status-active {
-  color: #166534;
+    color: #166534;
 
-  background-color: #dcfce7;
+    background-color: #dcfce7;
 }
 
 .nexo-status-inactive {
-  color: #991b1b;
+    color: #991b1b;
 
-  background-color: #fee2e2;
+    background-color: #fee2e2;
 }
+
 
 /*
  * ==========================================
@@ -277,20 +288,21 @@
  */
 
 .nexo-empty-state {
-  padding: 25px 15px;
+    padding: 25px 15px;
 
-  color: #6b7280;
+    color: #6b7280;
 
-  text-align: center;
+    text-align: center;
 
-  font-size: 14px;
+    font-size: 14px;
 }
 
 .nexo-card-empty {
-  color: #6b7280;
+    color: #6b7280;
 
-  text-align: center;
+    text-align: center;
 }
+
 
 /*
  * ==========================================
@@ -299,12 +311,13 @@
  */
 
 #sidebar {
-  overflow-y: auto;
+    overflow-y: auto;
 }
 
 #associations-list {
-  width: 100%;
+    width: 100%;
 }
+
 
 /*
  * ==========================================
@@ -313,26 +326,27 @@
  */
 
 @media (max-width: 768px) {
-  .nexo-card {
-    padding: 12px;
-  }
+    .nexo-card {
+        padding: 12px;
+    }
 
-  .nexo-card-title {
-    font-size: 15px;
-  }
+    .nexo-card-title {
+        font-size: 15px;
+    }
 
-  .nexo-popup {
-    min-width: 200px;
-    max-width: 260px;
-  }
+    .nexo-popup {
+        min-width: 200px;
+        max-width: 260px;
+    }
 
-  .nexo-marker-icon {
-    width: 40px;
-    height: 40px;
+    .nexo-marker-icon {
+        width: 40px;
+        height: 40px;
 
-    font-size: 18px;
-  }
+        font-size: 18px;
+    }
 }
+
 
 /*
  * ==========================================
@@ -341,34 +355,20 @@
  */
 
 @media (max-width: 480px) {
-  .nexo-card-header {
-    flex-direction: column;
-  }
+    .nexo-card-header {
+        flex-direction: column;
+    }
 
-  .nexo-status {
-    align-self: flex-start;
-  }
+    .nexo-status {
+        align-self: flex-start;
+    }
 
-  .nexo-popup {
-    min-width: 180px;
-    max-width: 230px;
-  }
+    .nexo-popup {
+        min-width: 180px;
+        max-width: 230px;
+    }
 
-  .nexo-badge {
-    font-size: 11px;
-  }
-}
-.app-logo {
-  max-width: 180px; /* Adjust this value to make the logo larger or smaller */
-  height: auto;
-  display: block;
-  margin: 10px 15px; /* Adds a little breathing room around the logo */
-}
-
-/* Optional: If you wrap it in a header container with a dark background to match the logo */
-.app-header {
-  background-color: #1a1a1a; /* Matches the dark background of your logo */
-  width: 100%;
-  display: flex;
-  align-items: center;
+    .nexo-badge {
+        font-size: 11px;
+    }
 }
