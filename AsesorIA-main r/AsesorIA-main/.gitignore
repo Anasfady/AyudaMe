@@ -1,0 +1,28 @@
+venv/
+.venv/
+.venv_linux
+.venv_linux/
+.venv_linux/**
+__pycache__/
+*.pyc
+.ipynb_checkpoints
+vectorstore_db/
+data/raw/*.pdf
+data/processed/*
+.env
+.DS_Store
+Thumbs.db
+
+# --- Frontend (Chainlit) — material local y de ejecución ---
+.agent-local/
+.pytest_cache/
+*.log
+.files/
+.data/
+**/.chainlit/translations/
+/.chainlit/
+.env.*
+!.env.example
+
+# Chroma local persistente (incluye potenciales documentos privados)
+/chroma_db/

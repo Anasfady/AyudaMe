@@ -1,0 +1,308 @@
+/*
+ * AsesorIA — warm sand/green visual layer.
+ * Colour tokens live in public/theme.json (single source of truth); this file
+ * only polishes global details and adds the ./-ias-* components consumed by
+ * public/custom.js (welcome hero + FAB quick menu). Golden rule: every class
+ * defined here starts with the reserved prefix `-ias-`, so we never collide
+ * with Chainlit's own selectors.
+ *
+ * Documented exception: the step status-chip rule (§16) targets the public id
+ * `step-*`; if a future Chainlit version changes the markup the rule simply
+ * stops applying and only the chip shows again (cosmetic degradation).
+ */
+
+/* --- Scrollbars (token del tema: claro→verde pizarra, oscuro→arena) --- */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--muted-foreground, 100 8% 40%)) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground, 100 8% 40%));
+  background-clip: padding-box;
+  border: 2px solid transparent;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary, 152 45% 26%));
+  background-clip: padding-box;
+}
+
+/* --- Text selection: soft green tint --- */
+::selection {
+  background: hsl(152 45% 90%);
+  color: hsl(150 30% 10%);
+}
+
+/* --- Visible, consistent focus ring (--ring token, green fallback) --- */
+:focus-visible {
+  outline: 2px solid hsl(var(--ring, 152 45% 34%));
+  outline-offset: 1px;
+}
+
+/* --- Documentary quotes (source traceability) --- */
+blockquote {
+  border-left: 3px solid hsl(var(--primary, 152 45% 26%));
+  background: hsl(var(--muted, 40 30% 92%));
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  margin: 0.5rem 0;
+}
+
+/* --- Highlighted source/emphasis text --- */
+strong {
+  color: hsl(var(--primary, 152 45% 26%));
+}
+
+/* --- Answer separators --- */
+hr {
+  border: none;
+  border-top: 1px solid hsl(var(--border, 40 25% 86%));
+  margin: 1rem 0;
+}
+
+/* --- Step internal status chip (§16) ---
+ * Chainlit 2.12 (Step.tsx) prepends <span>Usado/Usando</span> to every step
+ * title (<button id="step-…"> or <p id="step-…">). The span is the first
+ * child of the #step-* element and is hidden so only the title shows
+ * (e.g. "Fuentes utilizadas 2" stays expandable). */
+[id^="step-"] > span:first-child {
+  display: none;
+}
+
+/* =====================================================================
+ * -ias-* components (rendered by custom.js; defensive by construction:
+ * every node is created by JS with these classes and has an id guard).
+ * ===================================================================== */
+
+/* --- Welcome surface: landing-style hero + light suggestion chips --- */
+.-ias-welcome {
+  margin: 0.5rem 0 1.1rem;
+}
+
+.-ias-greeting {
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: hsl(var(--foreground));
+  margin-bottom: 0.3rem;
+}
+
+.-ias-sub {
+  color: hsl(var(--muted-foreground));
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.-ias-prompt {
+  font-size: 1.02rem;
+  font-weight: 650;
+  color: hsl(var(--foreground));
+  margin-bottom: 0.35rem;
+}
+
+.-ias-sug-label {
+  display: block;
+  font-size: 0.8rem;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 0.5rem;
+}
+
+.-ias-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Compact suggestion chip (one per topic). The full set of nine lives in
+ * the FAB menu, which only appears once the conversation has started. */
+.-ias-card {
+  display: inline-flex;
+  align-items: center;
+  text-align: left;
+  padding: 0.42rem 0.85rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: 999px;
+  background: hsl(var(--card));
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+  color: hsl(var(--foreground));
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+
+.-ias-card:hover {
+  border-color: hsl(var(--primary));
+  background: hsl(var(--accent));
+}
+
+.-ias-card:active {
+  background: hsl(var(--secondary));
+}
+
+/* --- Skip link: hidden until keyboard focus (WCAG 2.4.1) --- */
+.-ias-skip {
+  position: fixed;
+  top: -4rem;
+  left: 0.75rem;
+  z-index: 80;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  padding: 0.55rem 1rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 6px 18px hsl(150 30% 10% / 0.25);
+}
+
+.-ias-skip:focus {
+  top: 0;
+}
+
+/* --- FAB + quick-question panel --- */
+.-ias-fab {
+  position: fixed;
+  right: 1.1rem;
+  bottom: 4.4rem;
+  z-index: 40;
+  width: 2.85rem;
+  height: 2.85rem;
+  border-radius: 999px;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 6px 18px hsl(150 30% 10% / 0.25);
+}
+
+.-ias-fab:hover {
+  filter: brightness(1.07);
+}
+
+/* Hidden until the conversation starts (see custom.js syncFabVisibility) */
+.-ias-fab.-ias-fab-wait {
+  display: none;
+}
+
+.-ias-panel {
+  position: fixed;
+  right: 1.1rem;
+  bottom: 7.9rem;
+  z-index: 41;
+  width: min(20rem, calc(100vw - 2rem));
+  max-height: min(26rem, 70vh);
+  overflow-y: auto;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.75rem;
+  box-shadow: 0 14px 34px hsl(150 30% 10% / 0.3);
+  display: none;
+}
+
+.-ias-panel.-ias-open {
+  display: block;
+}
+
+.-ias-panel-head {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid hsl(var(--border));
+  background: hsl(var(--secondary));
+  font-weight: 650;
+  font-size: 0.88rem;
+}
+
+.-ias-panel-close {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: hsl(var(--muted-foreground));
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0.15rem;
+}
+
+.-ias-menu-group {
+  padding: 0.55rem 0.85rem 0.2rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: hsl(var(--primary));
+}
+
+.-ias-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  padding: 0.45rem 0.85rem;
+  font: inherit;
+  font-size: 0.85rem;
+  color: hsl(var(--foreground));
+  cursor: pointer;
+}
+
+.-ias-menu-item:hover {
+  background: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+}
+
+/* =====================================================================
+ * Composer: explicit text colours so the textarea never depends on an
+ * implicit inheritance chain (WCAG AA on any theme state).
+ * ===================================================================== */
+#chat-input {
+  color: hsl(var(--foreground));
+}
+
+#chat-input::placeholder {
+  color: hsl(var(--muted-foreground));
+  opacity: 1;
+}
+
+/* =====================================================================
+ * ≤640px: the FAB must clear the composer (send button stays clickable)
+ * and the Chainlit side view dialog must never cover the conversation
+ * (sources stay available in the in-thread "Fuentes utilizadas" step;
+ * custom.js closes the dialog the moment it opens on small screens).
+ * ===================================================================== */
+@media (max-width: 640px) {
+  .-ias-fab {
+    bottom: 10.5rem;
+  }
+
+  .-ias-panel {
+    bottom: 14rem;
+  }
+
+  [role="dialog"]:has(#side-view-content),
+  [role="dialog"]:has(#side-view-content) * {
+    animation-duration: 0s !important;
+    transition-duration: 0s !important;
+  }
+}

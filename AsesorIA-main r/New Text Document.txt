@@ -1,0 +1,173 @@
+## Presentación para la Defensa del Proyecto: AsesorIA
+
+**Diapositiva 1: Portada y Presentación**
+
+* **Título:** AsesorIA: Trazabilidad, Gobernanza y Precisión en el Asesoramiento Fiscal
+* **Subtítulo:** Defensa de la Arquitectura RAG, Pruebas de Calidad (QA) y Ética del Dato
+* **Presentador:** MD ABDUR RAHMAN NAHIAN – QA, Ethics & Defense Lead
+
+**Diapositiva 2: El Reto de la IA en la Fiscalidad (Cero Alucinaciones)**
+
+* **El Problema:** La aplicación de modelos de lenguaje (LLM) en el ámbito tributario sin anclaje documental genera riesgos legales inasumibles para los autónomos por la invención de normativas.
+* **Nuestra Solución (Grounding Estricto):** Implementación de una arquitectura de Generación Aumentada por Recuperación (RAG) que separa el razonamiento del modelo de nuestra base de datos vectorial certificada.
+* **Regla de Abstención:** El sistema `RAGEngine` está programado mediante *prompts* restrictivos para denegar respuestas si la base documental no contiene la evidencia legal exacta, priorizando la seguridad jurídica frente a la fluidez conversacional.
+
+**Diapositiva 3: Base Documental y Evidencia Legal (BOE)**
+
+* **Fuentes Certificadas:** La base de conocimiento indexa exclusivamente textos consolidados del Boletín Oficial del Estado, como la Ley 37/1992 (IVA) y el Real Decreto 1619/2012 (Reglamento de Facturación).
+* **Precisión de Recuperación (Ejemplos Validados):**
+* **Límites de Facturación Simplificada:** El sistema certifica correctamente que se puede expedir factura simplificada por importes de hasta 400 euros, IVA incluido.
+
+
+* **Límites Ampliados:** Recupera con exactitud la excepción de hasta 3.000 euros, IVA incluido, para sectores específicos como hostelería y restauración.
+
+
+* **Exenciones Inmobiliarias:** El sistema fundamenta que las segundas y ulteriores entregas de edificaciones están exentas de IVA citando textualmente el artículo 20.Uno.22 de la Ley del IVA.
+
+
+
+
+
+**Diapositiva 4: Estrategia de Pruebas (QA Suite en `tests/`)**
+
+* **Batería de Pruebas Automatizadas:** Diseño de `eval_cases.json` combinando consultas fiscales reales (*in-scope*) y preguntas trampa (*out-of-scope*).
+* **Métricas de Recuperación:** Evaluación de la relevancia de los fragmentos (*chunks*) recuperados mediante `test_retrieval.py` y validación de la división de documentos en `test_chunking.py`.
+* **Simulación Continua (CI/CD):** Implementación del módulo `MockRAG` en `ui/rag_adapter.py` acoplado al frontend (Chainlit) que permite ejecutar suites de pruebas unitarias de forma limpia, sin depender de la latencia o el coste de las claves API reales.
+
+**Diapositiva 5: Trazabilidad, Gobernanza y Privacidad**
+
+* **Linaje del Dato (Trazabilidad):** Toda respuesta incluye metadatos precisos. La interfaz de Chainlit despliega cajones laterales (`cl.Text(display="side")`) con el artículo y fragmento normativo exacto en el que se basa la respuesta.
+* **Privacidad por Diseño (RGPD):** El sistema procesa la legislación fiscal, no el estado financiero del usuario. Se mitiga el riesgo de fuga de datos sensibles y se aplican filtros de anonimización PII (`src/privacy/pii.py`).
+* **Transparencia:** Monitorización visible de la latencia (ej. `⏱️ Latencia: X ms`) para evaluar el rendimiento de la recuperación vectorial frente a la generación.
+
+---
+
+## Guion para la Defensa Oral
+
+"Miembros del tribunal evaluador, buenos días. Como Responsable de Calidad (QA), Ética y Defensa del proyecto AsesorIA, mi objetivo principal ha sido garantizar que esta herramienta sea jurídicamente segura. La fiscalidad española no admite aproximaciones. Por ello, la premisa técnica de este sistema RAG es la 'Cero Inferencia': el modelo de IA no actúa como un experto que razona, sino como un motor de comprensión lectora sobre una base de datos vectorial inmutable compuesta por documentos oficiales del BOE.
+
+Hemos estructurado nuestro pipeline para que la trazabilidad sea absoluta. Si un autónomo pregunta cuándo puede emitir un tique en su restaurante, el sistema no inventa límites; acude al Real Decreto 1619/2012 y le confirma que puede expedir una factura simplificada hasta los 3.000 euros por tratarse de un servicio de hostelería. Del mismo modo, si se le consulta sobre la exención de IVA en la venta de un local antiguo, cita con precisión el artículo 20 de la Ley del IVA sobre segundas entregas. Si la respuesta no está en el BOE, el sistema se abstiene.
+
+Para validar esto, hemos desarrollado una rigurosa suite de pruebas en nuestro repositorio. Evaluamos tanto la recuperación semántica (*chunking* y métricas) como la resistencia del *prompt* ante preguntas trampa. Además, desde la perspectiva de desarrollo ágil, nuestro frontend en Chainlit incorpora un adaptador de simulaciones (`MockRAG`) que nos permite auditar la interfaz y ejecutar los tests automatizados sin comprometer cuotas de API externas. A nivel ético y de gobernanza, AsesorIA no almacena datos financieros personales, cumpliendo estrictamente con el RGPD y ofreciendo un linaje de datos transparente al usuario mediante paneles interactivos de fuentes legales."
+
+---
+
+## Documentación del Repositorio (README)
+
+### `AsesorIA-main/README.md`
+
+```markdown
+# 🏛️ AsesorIA
+
+**Español** · [English](#english-version)
+
+---
+
+## 🇪🇸 Español
+
+**AsesorIA** es un sistema corporativo avanzado de preguntas y respuestas basado en la arquitectura RAG (Generación Aumentada por Recuperación). Está diseñado específicamente para la consulta fiscal, contable y normativa de autónomos en España, garantizando una trazabilidad absoluta y la mitigación estricta de alucinaciones.
+
+El motor de conocimiento se fundamenta exclusivamente en textos legales oficiales preindexados, tales como la Ley 37/1992 del Impuesto sobre el Valor Añadido y el Real Decreto 1619/2012 sobre obligaciones de facturación. Esto asegura que cada respuesta generada por el LLM esté anclada en la legislación vigente y nunca invente deducciones o normativas.
+
+### 🌟 Características Principales y Gobernanza
+* **Acceso Directo al Corpus Preindexado:** Los usuarios pueden consultar de inmediato la normativa fiscal y laboral base (RETA, LGSS, IRPF, IVA) sin necesidad de subir documentos locales a la sesión.
+* **Trazabilidad de Fuentes (Grounding):** Los fragmentos citados aparecen como botones interactivos en la interfaz. Al hacer clic, se despliega el texto normativo exacto (documento, página, sección y fragmento) en el cajón lateral derecho.
+* **Transparencia y Rendimiento:** Cada respuesta generada por `RAGEngine` incluye una métrica de latencia extremo a extremo (`⏱️ Latencia: X ms`) al pie del mensaje.
+* **Modo Mock Desacoplado para CI/CD:** El `RagAdapter` detecta de forma inteligente si la clave API está ausente o si se están ejecutando pruebas con claves dummy (`test`/`mock`), degradando limpiamente a `MockRAG`. Esto permite que los tests unitarios y las suites de integración continua en la carpeta `tests/` pasen sin requerir credenciales externas activas.
+
+### 📁 Arquitectura del Repositorio
+* `data/`: Corpus documental preindexado y referencias de evaluación.
+* `docs/`: Documentación de arquitectura, métricas, estrategias de chunking y gobernanza ética.
+* `scripts/`: Herramientas de automatización para descarga de corpus, auditorías de recuperación e indexación.
+* `src/`: Lógica central (Ingesta, limpieza, embeddings, base de datos vectorial y motor RAG).
+* `tests/`: Suite de control de calidad (QA) y pruebas de recuperación (liderado por QA).
+* `ui/`: Interfaz de usuario web desarrollada en Chainlit.
+
+### 💻 Ejecución Rápida
+1. Instalar dependencias generales y de visualización:
+   ```bash
+   pip install -r requirements.txt
+   pip install plotly
+
+```
+
+2. Iniciar la interfaz web:
+```bash
+cd ui
+chainlit run app.py
+
+```
+
+
+
+### 🛡️ Calidad, Ética y Defensa
+
+La validación de que el sistema cumple con las directrices de privacidad y que los umbrales de recuperación evitan las alucinaciones recae en nuestro equipo de QA.
+**QA, Ethics & Defense Lead:** MD ABDUR RAHMAN NAHIAN.
+
+---
+
+## 🇬🇧 English
+
+**AsesorIA** is a corporate RAG (Retrieval-Augmented Generation) question-answering system tailored for tax, accounting, and regulatory queries for freelancers (*autónomos*) in Spain. It ensures full traceability and strictly mitigates hallucinations by grounding its answers in official legal frameworks.
+
+### 🌟 Key Features & Backend Integration Notes
+
+* **Pre-indexed Corpus Access:** Users can immediately query the base legal and tax corpus upon startup, with no local file uploads required.
+* **Source Traceability & Side Panel:** Cited regulatory excerpts appear as interactive source chips below the answer. Clicking them opens the full context and exact snippet in the right-hand inspection drawer.
+* **Latency Metric Display:** Answers rendered by the `RAGEngine` include an end-to-end latency metric in milliseconds (`⏱️ Latencia: X ms`) at the bottom of the response message.
+* **Decoupled Mock Fallback for CI & Testing:** `RagAdapter` intelligently checks for valid credentials. If missing or set to dummy testing keys, it gracefully falls back to `MockRAG` (`is_mock = True`), allowing unit tests to pass seamlessly.
+
+**QA, Ethics & Defense Lead:** MD ABDUR RAHMAN NAHIAN.
+
+```
+
+---
+
+### `AsesorIA-main/ui/README.md`
+
+```markdown
+# 🖥️ AsesorIA - Frontend (Chainlit)
+
+Este directorio contiene la interfaz web de usuario (UI) para el sistema AsesorIA, construida utilizando **Chainlit**. Está diseñada para ofrecer una experiencia conversacional limpia, profesional y altamente trazable para consultas fiscales.
+
+## 🚀 Características de la Interfaz
+
+*   **Tema Corporativo:** Estilo visual corporativo en azul (claro/oscuro) adaptado para una lectura prolongada e integraciones profesionales.
+*   **Trazabilidad de Fuentes (Side Panel):** Los fragmentos de la base de datos vectorial recuperados por el RAG se muestran como botones interactivos (`cl.Text(display="side")`). Al hacer clic en ellos, se abre un panel lateral a la derecha mostrando el texto normativo exacto, documento, página y sección.
+*   **Latencia en Tiempo Real:** Las respuestas incluyen indicadores de latencia (`⏱️ Latencia: X ms`) en la parte inferior para monitorizar el rendimiento del backend.
+*   **Desacoplamiento Inteligente (MockRAG):** Hasta que el motor real se conecte en `ui/rag_adapter.py -> create_backend()`, la UI funciona de manera inteligente sobre un mock de demostración. Detecta si `GROQ_API_KEY` está configurada; de lo contrario, se degrada limpiamente a `MockRAG` (`is_mock = True`).
+
+## 🛠️ Instalación y Ejecución
+
+Asegúrate de que estás en la raíz del proyecto y has instalado el `requirements.txt` global, así como la librería `plotly` para la visualización de métricas.
+
+1. **Requisito Crítico en Windows:** 
+   Chainlit persiste en disco los elementos laterales de los mensajes. En entornos Windows, para evitar errores de sistema (`WinError 3`), asegúrate de crear el directorio `.files/` en la raíz del proyecto:
+   ```bash
+   mkdir -p .files
+
+```
+
+2. **Ejecutar la aplicación:**
+Navega al directorio `ui/` e inicia Chainlit:
+```bash
+cd ui
+chainlit run app.py
+
+```
+
+
+*La aplicación estará disponible en `http://localhost:8000`.*
+3. **Ejecutar Tests del Frontend:**
+Para validar los contratos de la interfaz y la persistencia de datos:
+```bash
+python -m pytest tests/ -q
+
+```
+
+
+
+```
+
+```

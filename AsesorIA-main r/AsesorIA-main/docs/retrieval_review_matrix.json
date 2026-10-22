@@ -1,0 +1,2221 @@
+{
+  "review_type": "assistant qualitative evidence audit; not human-approved gold labels",
+  "run": "20261004T134946547175Z",
+  "results_sha256": "b52ba84de1cbf6c9971b6108e5da0c4e0bb46d93c56497e6e05bf42428aebf04",
+  "benchmark_sha256": "4f54578f1ac5c5ee616eb1482b4a023333e4d11096b9fc78968ab9f5472b8913",
+  "scope": "40 questions x 3 configurations, top-8; targeted evidence review, not exhaustive relevance annotation of every chunk",
+  "status_legend": {
+    "S": "Explicit evidence confirmed for the literal question within the benchmark scope",
+    "P": "Related/partial evidence; complete support not established",
+    "A": "Ambiguous context or reference needing validation",
+    "N": "No direct sufficient evidence after reading this top-8",
+    "E": "Special category; abstention/personal handling outside this retrieval-only experiment"
+  },
+  "rows": [
+    {
+      "question_id": "q01",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 4,
+          "id": "a2f746c1de7d36a7946da2875433340f9053213d2338ebdefc23b1516a5e66ea",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 14,
+          "page_end": 14,
+          "text_sha256": "2ce90c425f34fa30435f78c6b1b9228146c05c9ff5c4043e92e74db61e047ac3"
+        }
+      ],
+      "note": "Porcentaje literal con contexto de 2025. 256/32 y 480/64 ofrecen página alternativa 14; S no implica cubrir todas las condiciones de la nota. La revisión previa era parcial: no establecía el primer rango posible."
+    },
+    {
+      "question_id": "q02",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "adcac06170e4d725139582a7ac05c4a139a80166ae548d1351f13f34f4c3e93c",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 379,
+          "page_end": 380,
+          "text_sha256": "b1e82ce12c9f04a0287ad96a3e0c12da4adebc0a9f7ca32d92000a99fc239bbf"
+        },
+        {
+          "rank": 3,
+          "id": "a73e0dc70c327e690fc97a8b0515907c899e1763f9603a978e7a94c2f82c8ed5",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 380,
+          "page_end": 380,
+          "text_sha256": "41fa7f15bebbcafcdad6dd6bda5f385a37126f72dd656b648ea6e8aa8f9e5af6"
+        }
+      ],
+      "note": "Regla IRPF de uso exclusivo y excepciones: 256/32 y 384/48 las reparten entre fragmentos; 480/64 las reúne. La pregunta no nombra IRPF: se sigue el ámbito de su referencia, sin mezclar reglas IVA."
+    },
+    {
+      "question_id": "q03",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "d9ee35b6ec9177b1c3c6eab33830487e0214033d5a1e34299ba87503e18d706d",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 439,
+          "page_end": 439,
+          "text_sha256": "36ee83c8ef8ae3543a3d6d57a8475da895515d3cc6eda3508c7219d7b8b1b940"
+        }
+      ],
+      "note": "Regla completa: 30 % de la proporción de superficie, salvo prueba de porcentaje distinto; no 30 % de todos los suministros."
+    },
+    {
+      "question_id": "q04",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "N",
+      "evidence": [],
+      "note": "256/32 y 384/48: revisión de top-8 sin regla directa suficiente. 480/64: regularización de cuotas, pero falta la regla principal de deducibilidad."
+    },
+    {
+      "question_id": "q05",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "P",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "9dfa2706c907685c96f01ae4ea1518cf3e544660a6c9ee55a02c095858ba0159",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 427,
+          "page_end": 428,
+          "text_sha256": "72d9ee10f7dce7359fccda419415e6ac3b3ad4e6be8723bd2d8b4b0e540f1711"
+        }
+      ],
+      "note": "Evidencia parcial: familiares en 256/32; gastos del titular en 384/48; otros gastos de personal en 480/64. El pie de 427 genera un page-hit sin la explicación general. No se acredita la enumeración completa con los fragmentos seleccionados."
+    },
+    {
+      "question_id": "q06",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "ff4d83604e17ff5deaa8547dd3d059aafadf460c16c400d237ef360384fd1eec",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 435,
+          "page_end": 435,
+          "text_sha256": "de6a0cc2748f1f99b80e436feec42290c6b882b072ec96219fcfc149bafc4fe7"
+        }
+      ],
+      "note": "Importe y fila España/sin pernocta vinculados al autónomo. En 480/64 el testigo explícito está en rango 6; las cifras de empleados en rangos anteriores no sustituyen su contexto."
+    },
+    {
+      "question_id": "q07",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "N",
+      "evidence": [],
+      "note": "256/32: top-8 con índice/novedades pero sin el tipo general solicitado. 384/48 y 480/64: regla explícita en página 119."
+    },
+    {
+      "question_id": "q08",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "A",
+      "evidence": [
+        {
+          "rank": 7,
+          "id": "c1544cdda0351b8649b9c496b743379d2a97de573bbe1e3ac295779c78507965",
+          "doc_id": "iva_manual_2025",
+          "page": 225,
+          "page_end": 226,
+          "text_sha256": "4229769606ecc68a3b37f66c65749236ba800707e55fb5c41175a216d80df0ae"
+        }
+      ],
+      "note": "256/32 y 384/48 recuperan la regla general trimestral; 480/64 recupera plazos del régimen simplificado. La pregunta pide una fecha concreta de 2025: falta contrastar calendario/inhábiles para validar esa fecha. A conserva esta limitación de la referencia; no corrige el benchmark ni afirma otro vencimiento."
+    },
+    {
+      "question_id": "q09",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 7,
+          "id": "7040d6d7923c08a9043a5180baff4cb93915cd2ab899d4b3a0d201664d267557",
+          "doc_id": "iva_manual_2025",
+          "page": 327,
+          "page_end": 328,
+          "text_sha256": "63ab9748b89ae50596fb66981dafca2025efedaf829894aab3dae32fb71643e9"
+        }
+      ],
+      "note": "Los cuatro libros aparecen juntos en los testigos. En 256/32, page-hit a k=3 no equivale a lista completa; testigo en rango 7."
+    },
+    {
+      "question_id": "q10",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 2,
+          "id": "18acf66edbad7aeae64bf353e5472e553eaeba24b2b3711b517f5647eeab43e5",
+          "doc_id": "iva_manual_2025",
+          "page": 139,
+          "page_end": 140,
+          "text_sha256": "a6d8a2dd90b90f16433293c826f9f169fa938fe70025033d71a7d356f4f1fd4f"
+        }
+      ],
+      "note": "256/32 y 384/48 incluyen cuatro/nueve años y diferencia superior a diez puntos. En 480/64 falta la regla temporal general en el top-8, aunque aparecen procedimiento y casos especiales."
+    },
+    {
+      "question_id": "q11",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "7cee7ec2e45f32022a2d8fe6a735b9a31490730e95535c13fae126ee47a47fe6",
+          "doc_id": "iva_manual_2025",
+          "page": 139,
+          "page_end": 140,
+          "text_sha256": "6ac96810304d94bd84b957e0b1d0797a2b23b3f7ffc56e0111df04e715a8e9c4"
+        }
+      ],
+      "note": "256/32 y 480/64 incluyen inferior a 3.005,06. En 384/48, el fragmento de página 139 termina antes de la lista: top-8 sin el umbral de valor."
+    },
+    {
+      "question_id": "q12",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 6,
+          "id": "2a92b0a8d1c86d99ba1513124755535a4a989e6df7e40dcca3054ef66561f145",
+          "doc_id": "iva_manual_2025",
+          "page": 138,
+          "page_end": 139,
+          "text_sha256": "a6cd09f1f9ac5451eda92358b49ca5dd7de0edbef83f8a41179c4ec12ff4e1e0"
+        }
+      ],
+      "note": "Los testigos dicen deducción íntegra para uso exclusivo en operaciones con derecho a deducir."
+    },
+    {
+      "question_id": "q13",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "P",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "3a169c2937c6bb79d73b7e2dbf063b7fb71c2127e4faeb91ca92542990afa184",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 15,
+          "page_end": 16,
+          "text_sha256": "4fef62b3295c2966ca8dc5c913316a47fcab5c606d36ee72aafda604ec42f726"
+        },
+        {
+          "rank": 5,
+          "id": "0895cdf696945eb4888ba71fd4d33977b58dfd0c2c8411b9044a405f5df1cc63",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 431,
+          "page_end": 431,
+          "text_sha256": "f75126a7562e1d7ca3c970b2b2dd038de68b302f5dbc00236ccc5810ba6ec632"
+        }
+      ],
+      "note": "Las tres aportan información del sistema, pero no se acredita de forma explícita toda la regla de previsión del promedio mensual señalada en la nota. 256/32 aporta una explicación alternativa IRPF de previsión anual; no se confunde con el desarrollo completo del artículo 308."
+    },
+    {
+      "question_id": "q14",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "P",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "3a169c2937c6bb79d73b7e2dbf063b7fb71c2127e4faeb91ca92542990afa184",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 15,
+          "page_end": 16,
+          "text_sha256": "4fef62b3295c2966ca8dc5c913316a47fcab5c606d36ee72aafda604ec42f726"
+        },
+        {
+          "rank": 4,
+          "id": "213e8bf6c1784b32b5c9e879c7e48cbc0396f7589979bf9c9a4e51651ec3dfe5",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 59,
+          "page_end": 60,
+          "text_sha256": "1cbc55a43ae1b459a35e44acf94792cded564d529b9f49599c45deb95791f843"
+        }
+      ],
+      "note": "256/32 y 384/48 mezclan tramos de años previos con una tabla 2025 incompleta. 480/64 contiene en rango 3 las tablas completas de 2025, permitiendo contar 3 + 12."
+    },
+    {
+      "question_id": "q15",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "3a169c2937c6bb79d73b7e2dbf063b7fb71c2127e4faeb91ca92542990afa184",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 15,
+          "page_end": 16,
+          "text_sha256": "4fef62b3295c2966ca8dc5c913316a47fcab5c606d36ee72aafda604ec42f726"
+        }
+      ],
+      "note": "Año, tabla reducida, tramo y base mínima presentes. 384/48 responde desde un documento alternativo, aunque falle document-hit."
+    },
+    {
+      "question_id": "q16",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "3a169c2937c6bb79d73b7e2dbf063b7fb71c2127e4faeb91ca92542990afa184",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 15,
+          "page_end": 16,
+          "text_sha256": "4fef62b3295c2966ca8dc5c913316a47fcab5c606d36ee72aafda604ec42f726"
+        }
+      ],
+      "note": "256/32 y 480/64 contienen la fila bajo 2025. En 384/48 la continuidad entre rangos 1 y 6 permite reconstruirla, pero el encabezado y la fila están separados: A, no S inequívoco."
+    },
+    {
+      "question_id": "q17",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 2,
+          "id": "3a169c2937c6bb79d73b7e2dbf063b7fb71c2127e4faeb91ca92542990afa184",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 15,
+          "page_end": 16,
+          "text_sha256": "4fef62b3295c2966ca8dc5c913316a47fcab5c606d36ee72aafda604ec42f726"
+        }
+      ],
+      "note": "256/32 y 384/48 recuperan la regla de base máxima RETA. En 480/64 la misma cifra aparece para artistas/taurinos: no se acepta extrapolarla al RETA."
+    },
+    {
+      "question_id": "q18",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "P",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "163a4dc4754534463e65d443c0bd208e72179f401c944231594a35254f5a541c",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 434,
+          "page_end": 434,
+          "text_sha256": "9a7c6dce19a240c1d784845a25c9fb5feb76f07ac4fe721a9c307d8e02d756e4"
+        },
+        {
+          "rank": 4,
+          "id": "d2f239aad9eb1d74ca866bbc1909b5fa1f1e51741174361d6955b4699ca1cc22",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 19,
+          "page_end": 19,
+          "text_sha256": "1587ff032fa5101da73941b281026e723953062283d861a609069b243bc1958e"
+        },
+        {
+          "rank": 6,
+          "id": "88441a2cd16c613c8831ca0ebd8b2a8a2b486ad0973767f71343a84776d529fc",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 16,
+          "page_end": 16,
+          "text_sha256": "0c17d3c21d71b6a41b72e852e86fba68fb3360eb9d98c1430b5d90146f62a305"
+        }
+      ],
+      "note": "480/64 reúne los tres tipos en contexto RETA. 256/32 y 384/48 recuperan profesional/MEI, pero las coincidencias de 28,30 en otros contextos no se aceptan como prueba equivalente."
+    },
+    {
+      "question_id": "q19",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "P",
+      "evidence": [
+        {
+          "rank": 3,
+          "id": "88441a2cd16c613c8831ca0ebd8b2a8a2b486ad0973767f71343a84776d529fc",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 16,
+          "page_end": 16,
+          "text_sha256": "0c17d3c21d71b6a41b72e852e86fba68fb3360eb9d98c1430b5d90146f62a305"
+        }
+      ],
+      "note": "Ningún top-8 reúne los cinco componentes en contexto correcto. El 0,10 adicional de página 16 no es la formación de página 30. Page-hit no fundamenta la suma."
+    },
+    {
+      "question_id": "q20",
+      "configuration": "corpus_256_32",
+      "category": "year_dependent",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 5,
+          "id": "3a169c2937c6bb79d73b7e2dbf063b7fb71c2127e4faeb91ca92542990afa184",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 15,
+          "page_end": 16,
+          "text_sha256": "4fef62b3295c2966ca8dc5c913316a47fcab5c606d36ee72aafda604ec42f726"
+        },
+        {
+          "rank": 8,
+          "id": "0bb79b97748e260f8128a2d9a717e0ad404015e9c6ff0284c069e907313d6b0e",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 59,
+          "page_end": 59,
+          "text_sha256": "be3aee3098e928d8867008af42d9a2273cbe99394b318e1f6f87d1927259962b"
+        }
+      ],
+      "note": "256/32 y 384/48 permiten comparar tabla reducida 2024 y 2025 con encabezados. 480/64 recupera 2025 y otros años/contextos, sin acreditar el dato 2024 solicitado."
+    },
+    {
+      "question_id": "q21",
+      "configuration": "corpus_256_32",
+      "category": "year_dependent",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 5,
+          "id": "3a169c2937c6bb79d73b7e2dbf063b7fb71c2127e4faeb91ca92542990afa184",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 15,
+          "page_end": 16,
+          "text_sha256": "4fef62b3295c2966ca8dc5c913316a47fcab5c606d36ee72aafda604ec42f726"
+        },
+        {
+          "rank": 8,
+          "id": "0bb79b97748e260f8128a2d9a717e0ad404015e9c6ff0284c069e907313d6b0e",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 59,
+          "page_end": 59,
+          "text_sha256": "be3aee3098e928d8867008af42d9a2273cbe99394b318e1f6f87d1927259962b"
+        }
+      ],
+      "note": "256/32 permite comparar las filas de 2024 y 2025. En 384/48 falta la fila general 2025; en 480/64 falta la fila 2024. La coincidencia numérica con 2023 no prueba ausencia de cambio."
+    },
+    {
+      "question_id": "q22",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "adcac06170e4d725139582a7ac05c4a139a80166ae548d1351f13f34f4c3e93c",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 379,
+          "page_end": 380,
+          "text_sha256": "b1e82ce12c9f04a0287ad96a3e0c12da4adebc0a9f7ca32d92000a99fc239bbf"
+        }
+      ],
+      "note": "Regla general de exclusividad para embarcaciones presente en las tres; 480/64 la encuentra en rango 5, no en su primer acierto de página."
+    },
+    {
+      "question_id": "q23",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 6,
+          "id": "c18031b04db45d113983370ff0174043e83cab19cb30eb2bf24926b55a331229",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 938,
+          "page_end": 938,
+          "text_sha256": "965fca4065adce42856982e367d11cee7923b993d064b6dfe83ce145cf784980"
+        }
+      ],
+      "note": "Consideración como bienes inmateriales presente; en 256/32 el primer page-hit es información sobre modelos, mientras la definición está en rango 6."
+    },
+    {
+      "question_id": "q24",
+      "configuration": "corpus_256_32",
+      "category": "no_answer",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "a829e9fc59b12c8a6bba84795b677f01939c0cbc4c330c5828de038347c99fa0",
+          "doc_id": "iva_manual_2025",
+          "page": 188,
+          "page_end": 188,
+          "text_sha256": "2119bc7b737c307baabf7ed73ee209683dfad02597af0ed9cc1117cf2f7a991b"
+        }
+      ],
+      "note": "Caso sin respuesta según benchmark. El primer resultado trata IVA/devoluciones o modelos, no resuelve residencia en Andorra. No se ha ejecutado un sistema de abstención ni auditado exhaustivamente todo el corpus."
+    },
+    {
+      "question_id": "q25",
+      "configuration": "corpus_256_32",
+      "category": "no_answer",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "606ae7569a098b167777559b431c2a17c3f7bff38eb5e46247948c13deb6c41f",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 14,
+          "page_end": 14,
+          "text_sha256": "16b90f25f70523be6e15f80ba82edb5ab8475df7b92a9f7ee62ecea9d68ceeb7"
+        }
+      ],
+      "note": "Caso sin respuesta según benchmark. Bonificaciones de cuidadores, hogar o conciliación no prueban la bonificación exacta para contratar a un familiar menor en tareas domésticas."
+    },
+    {
+      "question_id": "q26",
+      "configuration": "corpus_256_32",
+      "category": "personal_case",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "f062ee4e80aaffb2ce77309e0ebaf18349045113de254c709994250cf932a424",
+          "doc_id": "iva_manual_2025",
+          "page": 304,
+          "page_end": 305,
+          "text_sha256": "dd702a5327aa7ee9f9d7315e1487e221798be2200594390fd1ffce83b3bdc0b1"
+        }
+      ],
+      "note": "Caso personal: los primeros resultados tratan declaraciones informativas y sus plazos. No hay facturas del usuario para determinar una cuota exacta."
+    },
+    {
+      "question_id": "q27",
+      "configuration": "corpus_256_32",
+      "category": "personal_case",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "c1d865ac2fe9ee9da53c14472551ec79a20fc6d6d51b20ad3a44bd6c96858d8f",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 21,
+          "page_end": 21,
+          "text_sha256": "4b60088b0b8a45278be8ca88c9558c3a089f749f57c0da9a50b3de706766d1ba"
+        }
+      ],
+      "note": "Caso personal: aparecen cese de actividad o cotización de trabajadores del mar. Faltan datos del usuario y no se demuestra asignación correcta de tramo."
+    },
+    {
+      "question_id": "q28",
+      "configuration": "corpus_256_32",
+      "category": "personal_case",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "a6695d9562513780460317d3f90e26f852d9c8aae07ef1b94d8998f6177007e4",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 45,
+          "page_end": 45,
+          "text_sha256": "b256baa5b82611881b62cf4b7870d3193a5739983bc37a3f967857232ef3baab"
+        }
+      ],
+      "note": "Caso personal: los primeros resultados tratan bonificaciones o prestación por cese; no equivalen al cálculo de la cuota al darse de baja a mitad de mes."
+    },
+    {
+      "question_id": "q29",
+      "configuration": "corpus_256_32",
+      "category": "personal_case",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "404248bc8bb8b9b05d0a0288a9664b244a0129711fc6d58725ff9db4638795f0",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 497,
+          "page_end": 497,
+          "text_sha256": "a3d32252d2f268e271d38cba1505b34b3ada088244de9d8f3defae8dc5292522"
+        }
+      ],
+      "note": "Caso personal: límites de módulos y ejemplos de otros contribuyentes no calculan la cuota exacta del usuario. Ingresos menos gastos no basta para una liquidación final."
+    },
+    {
+      "question_id": "q30",
+      "configuration": "corpus_256_32",
+      "category": "out_of_scope",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "1365418d266d60e4df2907a837506db5fafd4b2689b9614156008b5cb7c5ddf3",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 134,
+          "page_end": 134,
+          "text_sha256": "f680a5f139a60c697dd71c93f10935157ccecf4d4cd1dc65cb968ae4430ef558"
+        }
+      ],
+      "note": "Fuera de alcance: temporales pasados y eventos con Madrid son coincidencias temáticas, no una previsión meteorológica."
+    },
+    {
+      "question_id": "q31",
+      "configuration": "corpus_256_32",
+      "category": "out_of_scope",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "769646f75219f338a8595a0c261b6e7477d285e0edbacc950fe48bc468e7b56a",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 505,
+          "page_end": 506,
+          "text_sha256": "94dd815778fc017df1c083dc760584f320157d2ac92da8ff09c3274bf98f002d"
+        }
+      ],
+      "note": "Fuera de alcance: epígrafes, dietas y gastos de restaurantes no son recomendaciones de restaurantes."
+    },
+    {
+      "question_id": "q32",
+      "configuration": "corpus_256_32",
+      "category": "out_of_scope",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "9e34d696856cf845e11a58f8877fbe13cf4a6bd6415ce630c26be748a863565e",
+          "doc_id": "irpf_manual_2025_p2",
+          "page": 276,
+          "page_end": 276,
+          "text_sha256": "4769d751f14253a355edcb403a9955c8c13162b59a88b09da0de38880e3a9e27"
+        }
+      ],
+      "note": "Fuera de alcance según briefing/benchmark: deducciones IRPF por inversión en sociedades no determinan el tipo del Impuesto sobre Sociedades."
+    },
+    {
+      "question_id": "q33",
+      "configuration": "corpus_256_32",
+      "category": "out_of_scope",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "dbd3e1fc01e9df66e2c170638a3773d1712437c3f3cb19368c5b20ea5f040a37",
+          "doc_id": "iva_manual_2025",
+          "page": 117,
+          "page_end": 117,
+          "text_sha256": "efd3bfa299806d8e6242d6242f56dcdc014ccbbd0ff94634680fb57dd712537e"
+        }
+      ],
+      "note": "Fuera de alcance: IVA de créditos impagados o procedimientos de pago no constituyen una guía de reclamación jurídica de deudas."
+    },
+    {
+      "question_id": "q34",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 2,
+          "id": "3dec76b70c35fc669c97222168e6866fb1be36e7e8317c3092db3d16ee325481",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 380,
+          "page_end": 380,
+          "text_sha256": "b66477478aeff286accb4ba54652cc923963204785d8e23b9f5cad741eeee034"
+        }
+      ],
+      "note": "Parte realmente utilizada, aprovechamiento separado e independiente y exclusión de indivisibles presentes."
+    },
+    {
+      "question_id": "q35",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "273d4649a1e2bcca254349bf2ec47e88fd8c3016b54205d875be18aa36041fd1",
+          "doc_id": "iva_manual_2025",
+          "page": 139,
+          "page_end": 139,
+          "text_sha256": "3e889e5b58dd1a6d3ae25cbf13b6dd3f595b4bab77fd06d03211d3f2e303c4af"
+        }
+      ],
+      "note": "Los testigos vinculan uso parcial en operaciones con derecho a deducir con porcentaje de prorrata general."
+    },
+    {
+      "question_id": "q36",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 4,
+          "id": "18acf66edbad7aeae64bf353e5472e553eaeba24b2b3711b517f5647eeab43e5",
+          "doc_id": "iva_manual_2025",
+          "page": 139,
+          "page_end": 140,
+          "text_sha256": "a6d8a2dd90b90f16433293c826f9f169fa938fe70025033d71a7d356f4f1fd4f"
+        }
+      ],
+      "note": "Diferencia superior a diez puntos presente. En 256/32 y 384/48 el testigo está en rango 4 y 5, respectivamente."
+    },
+    {
+      "question_id": "q37",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "3a169c2937c6bb79d73b7e2dbf063b7fb71c2127e4faeb91ca92542990afa184",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 15,
+          "page_end": 16,
+          "text_sha256": "4fef62b3295c2966ca8dc5c913316a47fcab5c606d36ee72aafda604ec42f726"
+        }
+      ],
+      "note": "Los tres intervalos de la tabla reducida aparecen bajo 2025 en las tres configuraciones."
+    },
+    {
+      "question_id": "q38",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 7,
+          "id": "b0425d987455eef4c2d535fc7c00e4356f196f90830717c9cb3ae58abd0ed545",
+          "doc_id": "reta_leta_20_2007",
+          "page": 15,
+          "page_end": 16,
+          "text_sha256": "3d5bed525fe67bd9a7da8033fbc1bb2afa5351b30ebf6cc7ecba84a4a778ba31"
+        }
+      ],
+      "note": "75 % e ingresos de un cliente vinculados al TRADE. Se citan testigos de LETA; puede haber evidencia alternativa anterior en IRPF. Los rangos no son mínimos certificados."
+    },
+    {
+      "question_id": "q39",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "5751d45fd124f8b34f252627136297d30d522fc740ba30c4432abe807c364841",
+          "doc_id": "reta_leta_20_2007",
+          "page": 18,
+          "page_end": 18,
+          "text_sha256": "6fb40d1f94a9e44136a1420c9cc15904bc1680cbb2320483da9bddb2cfeb62c5"
+        }
+      ],
+      "note": "18 días hábiles y posibilidad de mejora contractual presentes en las tres."
+    },
+    {
+      "question_id": "q40",
+      "configuration": "corpus_256_32",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "e583944099c2f9c45836d79522f0ed30e5d3fe96f54e40c34f2b34ae6e7539ba",
+          "doc_id": "reta_leta_20_2007",
+          "page": 16,
+          "page_end": 16,
+          "text_sha256": "ce5bb9d7db6ff479567a332534226984a39c22c69a4978563f5af9b9414f5a08"
+        },
+        {
+          "rank": 4,
+          "id": "d3279b62e08387ff20fb3fccc6c510b9d7981048b94069b751bc650910f0ba38",
+          "doc_id": "reta_leta_20_2007",
+          "page": 16,
+          "page_end": 16,
+          "text_sha256": "91356e392ea1f37472b090c88f83dd1627c0504ca05d1b4740aa13eac8cc6698"
+        }
+      ],
+      "note": "Los cinco supuestos están presentes combinando 1+4 en 256/32 y en un fragmento en las otras dos. S acredita los supuestos preguntados, no todas las condiciones posteriores de contratación."
+    },
+    {
+      "question_id": "q01",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 8,
+          "id": "a19c157b83888dfa5a4a5fb45a8fdbdfce2ba84977e12a4c355d0d1410632a5e",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 449,
+          "page_end": 449,
+          "text_sha256": "5b0bbb91e364ba02380978f5c59143987ef5e9b0c97b13ab02a0841069cbac6e"
+        }
+      ],
+      "note": "Porcentaje literal con contexto de 2025. 256/32 y 480/64 ofrecen página alternativa 14; S no implica cubrir todas las condiciones de la nota. La revisión previa era parcial: no establecía el primer rango posible."
+    },
+    {
+      "question_id": "q02",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "85391bbdd734164a8bf85c820618eb523c3212e9364e9e056d5c9b26dcd54e92",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 379,
+          "page_end": 380,
+          "text_sha256": "c247d6d3622300dfe477f958c839b895625c8f9d57fe34daeb093a71f11caf05"
+        },
+        {
+          "rank": 4,
+          "id": "951942e8d59a54deb33a702cbd74dd59b6049a8cd6471531b29b7af0749a6343",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 380,
+          "page_end": 380,
+          "text_sha256": "4309734945a1fd2f0379c1f8a03a5376dd1568b1f9b6ce706279bd70422d0cd4"
+        }
+      ],
+      "note": "Regla IRPF de uso exclusivo y excepciones: 256/32 y 384/48 las reparten entre fragmentos; 480/64 las reúne. La pregunta no nombra IRPF: se sigue el ámbito de su referencia, sin mezclar reglas IVA."
+    },
+    {
+      "question_id": "q03",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "fa2ece65496fbea0fcdfde50c4c251e2408bc8c0cc5f6ba4c41d11532cd6b444",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 439,
+          "page_end": 439,
+          "text_sha256": "10279235dba188757105a52bf7f2a29846b9d181b672eb43cf9875a96f47b907"
+        }
+      ],
+      "note": "Regla completa: 30 % de la proporción de superficie, salvo prueba de porcentaje distinto; no 30 % de todos los suministros."
+    },
+    {
+      "question_id": "q04",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "N",
+      "evidence": [],
+      "note": "256/32 y 384/48: revisión de top-8 sin regla directa suficiente. 480/64: regularización de cuotas, pero falta la regla principal de deducibilidad."
+    },
+    {
+      "question_id": "q05",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "P",
+      "evidence": [
+        {
+          "rank": 5,
+          "id": "26d4500b6afc2bf3ffebb5ff7d04cdd82dbff70552a0d2e7833941286558510c",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 430,
+          "page_end": 431,
+          "text_sha256": "df5f2cd07cb0a32e9b64941a5ed1d3196bb0e31db75f2855ee91475cda8893fc"
+        }
+      ],
+      "note": "Evidencia parcial: familiares en 256/32; gastos del titular en 384/48; otros gastos de personal en 480/64. El pie de 427 genera un page-hit sin la explicación general. No se acredita la enumeración completa con los fragmentos seleccionados."
+    },
+    {
+      "question_id": "q06",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "707a82406caf7d7b41485521f8beee4c542e53fed358e95d7dcc36ca956490df",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 434,
+          "page_end": 435,
+          "text_sha256": "b10d6de469ea7985ffe4eabd1c3e51da244a21f4f1fd1e7d108105b11dcb1230"
+        }
+      ],
+      "note": "Importe y fila España/sin pernocta vinculados al autónomo. En 480/64 el testigo explícito está en rango 6; las cifras de empleados en rangos anteriores no sustituyen su contexto."
+    },
+    {
+      "question_id": "q07",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 6,
+          "id": "6c022b3c7f566ef126850d235d516ccd0de53acb60f1bb364d770e66df5ae71a",
+          "doc_id": "iva_manual_2025",
+          "page": 118,
+          "page_end": 119,
+          "text_sha256": "3b4da97811db18eca1b22fad92e7abd8ec6fbcd6b8915fa50970d5d5ea3130df"
+        }
+      ],
+      "note": "256/32: top-8 con índice/novedades pero sin el tipo general solicitado. 384/48 y 480/64: regla explícita en página 119."
+    },
+    {
+      "question_id": "q08",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "A",
+      "evidence": [
+        {
+          "rank": 7,
+          "id": "4e56ee126ec7ea54985e24d9efd6b88ff498b51dd42285aa8f3119b3c6fc99a3",
+          "doc_id": "iva_manual_2025",
+          "page": 225,
+          "page_end": 226,
+          "text_sha256": "2fbc9beffbdf787deec2d80f51069f667ff0e432fee47a56aff7e86344f41bfc"
+        }
+      ],
+      "note": "256/32 y 384/48 recuperan la regla general trimestral; 480/64 recupera plazos del régimen simplificado. La pregunta pide una fecha concreta de 2025: falta contrastar calendario/inhábiles para validar esa fecha. A conserva esta limitación de la referencia; no corrige el benchmark ni afirma otro vencimiento."
+    },
+    {
+      "question_id": "q09",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 3,
+          "id": "10ff79cf73bad5d4c1d95c0898737cc026cfb90242d35bf3aec8ed7b3a637236",
+          "doc_id": "iva_manual_2025",
+          "page": 327,
+          "page_end": 328,
+          "text_sha256": "5ec4f18965f342a5afca7809dac0de151f465dd86f2881a1d70b1cfcd24f10bb"
+        }
+      ],
+      "note": "Los cuatro libros aparecen juntos en los testigos. En 256/32, page-hit a k=3 no equivale a lista completa; testigo en rango 7."
+    },
+    {
+      "question_id": "q10",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "616ddacb02ecab56d69de210bcef741c48cf98b67a1254468f4c8647c90a8fdc",
+          "doc_id": "iva_manual_2025",
+          "page": 139,
+          "page_end": 140,
+          "text_sha256": "e4d2a3caccb2ef8d61225c4eb5f058d37a8dd11f188eb2ee749e4509aea407f1"
+        }
+      ],
+      "note": "256/32 y 384/48 incluyen cuatro/nueve años y diferencia superior a diez puntos. En 480/64 falta la regla temporal general en el top-8, aunque aparecen procedimiento y casos especiales."
+    },
+    {
+      "question_id": "q11",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "P",
+      "evidence": [
+        {
+          "rank": 7,
+          "id": "616ddacb02ecab56d69de210bcef741c48cf98b67a1254468f4c8647c90a8fdc",
+          "doc_id": "iva_manual_2025",
+          "page": 139,
+          "page_end": 140,
+          "text_sha256": "e4d2a3caccb2ef8d61225c4eb5f058d37a8dd11f188eb2ee749e4509aea407f1"
+        }
+      ],
+      "note": "256/32 y 480/64 incluyen inferior a 3.005,06. En 384/48, el fragmento de página 139 termina antes de la lista: top-8 sin el umbral de valor."
+    },
+    {
+      "question_id": "q12",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 7,
+          "id": "f2249e7579b580d1c050f01b4c82e18be1441048f01b119eeeafee2d34aee8c9",
+          "doc_id": "iva_manual_2025",
+          "page": 138,
+          "page_end": 139,
+          "text_sha256": "5fed11c048769cb5752c967f44cfa2cf07ac16b22317a542b3ccab472630d625"
+        }
+      ],
+      "note": "Los testigos dicen deducción íntegra para uso exclusivo en operaciones con derecho a deducir."
+    },
+    {
+      "question_id": "q13",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "P",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "fcd4476a7663c0cf958043755c7ebd7d0d1230848268f77c3353d144ffaad0bd",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 15,
+          "page_end": 16,
+          "text_sha256": "4ceb6e8dbe3d6bfca804afedd82f3a7773cce2a23be5aa2769c00cd33f212492"
+        },
+        {
+          "rank": 2,
+          "id": "c6337238e2a770efaa2b66c5e6f57274a6ade27c41dc7ab1110813af3d25e8ab",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 11,
+          "page_end": 12,
+          "text_sha256": "a90b1844907838b6f23e8d06b460c206e53dec59d1324d968a670e3ae3b83024"
+        }
+      ],
+      "note": "Las tres aportan información del sistema, pero no se acredita de forma explícita toda la regla de previsión del promedio mensual señalada en la nota. 256/32 aporta una explicación alternativa IRPF de previsión anual; no se confunde con el desarrollo completo del artículo 308."
+    },
+    {
+      "question_id": "q14",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "P",
+      "evidence": [
+        {
+          "rank": 3,
+          "id": "35d8711a3678c4c1b1d2e931ce34c66e17348a99e08118559d2abec03d001812",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 59,
+          "page_end": 60,
+          "text_sha256": "faa423628ce7694c790a3160da133461400d5d52c8266b951d9451e0ff31a214"
+        },
+        {
+          "rank": 6,
+          "id": "fcd4476a7663c0cf958043755c7ebd7d0d1230848268f77c3353d144ffaad0bd",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 15,
+          "page_end": 16,
+          "text_sha256": "4ceb6e8dbe3d6bfca804afedd82f3a7773cce2a23be5aa2769c00cd33f212492"
+        }
+      ],
+      "note": "256/32 y 384/48 mezclan tramos de años previos con una tabla 2025 incompleta. 480/64 contiene en rango 3 las tablas completas de 2025, permitiendo contar 3 + 12."
+    },
+    {
+      "question_id": "q15",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "35d8711a3678c4c1b1d2e931ce34c66e17348a99e08118559d2abec03d001812",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 59,
+          "page_end": 60,
+          "text_sha256": "faa423628ce7694c790a3160da133461400d5d52c8266b951d9451e0ff31a214"
+        }
+      ],
+      "note": "Año, tabla reducida, tramo y base mínima presentes. 384/48 responde desde un documento alternativo, aunque falle document-hit."
+    },
+    {
+      "question_id": "q16",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "A",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "35d8711a3678c4c1b1d2e931ce34c66e17348a99e08118559d2abec03d001812",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 59,
+          "page_end": 60,
+          "text_sha256": "faa423628ce7694c790a3160da133461400d5d52c8266b951d9451e0ff31a214"
+        },
+        {
+          "rank": 6,
+          "id": "82de6caf1a40346922f4f024cfec13aed6cd943570a841bcfea0d80abbfa0182",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 60,
+          "page_end": 60,
+          "text_sha256": "76c0c41305d4d7b7318392c81b71122db60d80cc660d359b8eb2eb7355ef7d0d"
+        }
+      ],
+      "note": "256/32 y 480/64 contienen la fila bajo 2025. En 384/48 la continuidad entre rangos 1 y 6 permite reconstruirla, pero el encabezado y la fila están separados: A, no S inequívoco."
+    },
+    {
+      "question_id": "q17",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 3,
+          "id": "fcd4476a7663c0cf958043755c7ebd7d0d1230848268f77c3353d144ffaad0bd",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 15,
+          "page_end": 16,
+          "text_sha256": "4ceb6e8dbe3d6bfca804afedd82f3a7773cce2a23be5aa2769c00cd33f212492"
+        }
+      ],
+      "note": "256/32 y 384/48 recuperan la regla de base máxima RETA. En 480/64 la misma cifra aparece para artistas/taurinos: no se acepta extrapolarla al RETA."
+    },
+    {
+      "question_id": "q18",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "P",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "f8aedfaaedc918241d8984ee3f5ce041eb96a5cb4884ef9f23485f56737fd288",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 16,
+          "page_end": 16,
+          "text_sha256": "f6e8c44d5b1e1fb7460088e3915aafb230d2bab403a70c31672328f23d5b9269"
+        },
+        {
+          "rank": 3,
+          "id": "1e2801e19e767939f48d67bff111d460b344f552473a9274aaf8bdb085027046",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 433,
+          "page_end": 434,
+          "text_sha256": "097fe80c9af24b584ca3d6501816c601f963f043336b3282da8a937f8417e7e7"
+        }
+      ],
+      "note": "480/64 reúne los tres tipos en contexto RETA. 256/32 y 384/48 recuperan profesional/MEI, pero las coincidencias de 28,30 en otros contextos no se aceptan como prueba equivalente."
+    },
+    {
+      "question_id": "q19",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "P",
+      "evidence": [
+        {
+          "rank": 3,
+          "id": "f8aedfaaedc918241d8984ee3f5ce041eb96a5cb4884ef9f23485f56737fd288",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 16,
+          "page_end": 16,
+          "text_sha256": "f6e8c44d5b1e1fb7460088e3915aafb230d2bab403a70c31672328f23d5b9269"
+        }
+      ],
+      "note": "Ningún top-8 reúne los cinco componentes en contexto correcto. El 0,10 adicional de página 16 no es la formación de página 30. Page-hit no fundamenta la suma."
+    },
+    {
+      "question_id": "q20",
+      "configuration": "corpus_384_48",
+      "category": "year_dependent",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "221259b38d1989224cdf0aed1576a6d0db9235f546d3b6b31923626c5dc1561f",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 59,
+          "page_end": 59,
+          "text_sha256": "ff5e975fcfd292e0e5b9efe7b8841fee4776c83185e9b3eeb6bfc54a6abe4b49"
+        },
+        {
+          "rank": 2,
+          "id": "35d8711a3678c4c1b1d2e931ce34c66e17348a99e08118559d2abec03d001812",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 59,
+          "page_end": 60,
+          "text_sha256": "faa423628ce7694c790a3160da133461400d5d52c8266b951d9451e0ff31a214"
+        }
+      ],
+      "note": "256/32 y 384/48 permiten comparar tabla reducida 2024 y 2025 con encabezados. 480/64 recupera 2025 y otros años/contextos, sin acreditar el dato 2024 solicitado."
+    },
+    {
+      "question_id": "q21",
+      "configuration": "corpus_384_48",
+      "category": "year_dependent",
+      "status": "P",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "221259b38d1989224cdf0aed1576a6d0db9235f546d3b6b31923626c5dc1561f",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 59,
+          "page_end": 59,
+          "text_sha256": "ff5e975fcfd292e0e5b9efe7b8841fee4776c83185e9b3eeb6bfc54a6abe4b49"
+        },
+        {
+          "rank": 2,
+          "id": "35d8711a3678c4c1b1d2e931ce34c66e17348a99e08118559d2abec03d001812",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 59,
+          "page_end": 60,
+          "text_sha256": "faa423628ce7694c790a3160da133461400d5d52c8266b951d9451e0ff31a214"
+        }
+      ],
+      "note": "256/32 permite comparar las filas de 2024 y 2025. En 384/48 falta la fila general 2025; en 480/64 falta la fila 2024. La coincidencia numérica con 2023 no prueba ausencia de cambio."
+    },
+    {
+      "question_id": "q22",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 3,
+          "id": "85391bbdd734164a8bf85c820618eb523c3212e9364e9e056d5c9b26dcd54e92",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 379,
+          "page_end": 380,
+          "text_sha256": "c247d6d3622300dfe477f958c839b895625c8f9d57fe34daeb093a71f11caf05"
+        }
+      ],
+      "note": "Regla general de exclusividad para embarcaciones presente en las tres; 480/64 la encuentra en rango 5, no en su primer acierto de página."
+    },
+    {
+      "question_id": "q23",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 5,
+          "id": "e4faa28a889f2e4791f4c6fe3e339b4f80e59229961da68608ea2646cd08f9bc",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 938,
+          "page_end": 938,
+          "text_sha256": "a10190ac44a35f6f13aa73f9b3b0801a4df601172eaa837d37d6634e7485976d"
+        }
+      ],
+      "note": "Consideración como bienes inmateriales presente; en 256/32 el primer page-hit es información sobre modelos, mientras la definición está en rango 6."
+    },
+    {
+      "question_id": "q24",
+      "configuration": "corpus_384_48",
+      "category": "no_answer",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "92e1d98c57a29883b1cb0970372b0906352ffe495ee08f8d5ce7f19d5dfd6c38",
+          "doc_id": "iva_manual_2025",
+          "page": 149,
+          "page_end": 149,
+          "text_sha256": "b8e99457a90dcd973c7c8c6179b45065c78a01233eb64dddaac0d5c52d7568d0"
+        }
+      ],
+      "note": "Caso sin respuesta según benchmark. El primer resultado trata IVA/devoluciones o modelos, no resuelve residencia en Andorra. No se ha ejecutado un sistema de abstención ni auditado exhaustivamente todo el corpus."
+    },
+    {
+      "question_id": "q25",
+      "configuration": "corpus_384_48",
+      "category": "no_answer",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "f4c9959b38ce7b92bb8535f5e616ff8c0439546bde22fc96797cb0894a7346a6",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 14,
+          "page_end": 14,
+          "text_sha256": "9ebbe19b1d5ed1cdfe388f940655e4c95172be9d1db14fa9f578d5f7c65d0537"
+        }
+      ],
+      "note": "Caso sin respuesta según benchmark. Bonificaciones de cuidadores, hogar o conciliación no prueban la bonificación exacta para contratar a un familiar menor en tareas domésticas."
+    },
+    {
+      "question_id": "q26",
+      "configuration": "corpus_384_48",
+      "category": "personal_case",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "f1d741ac62a75cd1bab8443553b271ba790c4602eb878899fc21975624c71a49",
+          "doc_id": "iva_manual_2025",
+          "page": 304,
+          "page_end": 305,
+          "text_sha256": "c29ee5d21170c1653b1e22b4d3fa44e9bed330ee31ca44e65995c4c669f6a1a2"
+        }
+      ],
+      "note": "Caso personal: los primeros resultados tratan declaraciones informativas y sus plazos. No hay facturas del usuario para determinar una cuota exacta."
+    },
+    {
+      "question_id": "q27",
+      "configuration": "corpus_384_48",
+      "category": "personal_case",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "b960d338a44697b44368b39b1a2552903e28378a1f3f15e7fdfe57c83b2ce3c0",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 21,
+          "page_end": 21,
+          "text_sha256": "b4440be448b7a630184049b37eee91e4e5f74ee79d62725fd08971ba8ebb3412"
+        }
+      ],
+      "note": "Caso personal: aparecen cese de actividad o cotización de trabajadores del mar. Faltan datos del usuario y no se demuestra asignación correcta de tramo."
+    },
+    {
+      "question_id": "q28",
+      "configuration": "corpus_384_48",
+      "category": "personal_case",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "e268e8312137255e1c8a2fde8952967fd20a077f45f5814deb04fe65ce4c2a33",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 25,
+          "page_end": 25,
+          "text_sha256": "2a117295bf8fe59bd80365b5edc3b15c9c317db7528363af02bb447b8c21571f"
+        }
+      ],
+      "note": "Caso personal: los primeros resultados tratan bonificaciones o prestación por cese; no equivalen al cálculo de la cuota al darse de baja a mitad de mes."
+    },
+    {
+      "question_id": "q29",
+      "configuration": "corpus_384_48",
+      "category": "personal_case",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "3597d0fc6d7f059ea28928c9626d103783438e0b5833e9640232111c2ef46819",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 1148,
+          "page_end": 1149,
+          "text_sha256": "b9b5545811b4147f9130f6d165247318a25a5ceb29edeb7952408c5c08bd66ce"
+        }
+      ],
+      "note": "Caso personal: límites de módulos y ejemplos de otros contribuyentes no calculan la cuota exacta del usuario. Ingresos menos gastos no basta para una liquidación final."
+    },
+    {
+      "question_id": "q30",
+      "configuration": "corpus_384_48",
+      "category": "out_of_scope",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "9dbde3f6ff7ef01f8f67481e5373eb32015028624f8726ccd0d2c50257efea00",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 1226,
+          "page_end": 1226,
+          "text_sha256": "dd894a3ac2b6fbb7e31b14b930f4a702061a3a01bead615e75ff2e00ad17905d"
+        }
+      ],
+      "note": "Fuera de alcance: temporales pasados y eventos con Madrid son coincidencias temáticas, no una previsión meteorológica."
+    },
+    {
+      "question_id": "q31",
+      "configuration": "corpus_384_48",
+      "category": "out_of_scope",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "21a3b76130b1fcb68f4b3d756e35ac541e333ca4f1c453dbd25c2ff54f089ad1",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 224,
+          "page_end": 224,
+          "text_sha256": "8ad6880ad217917133d890f32c38798bb1cb89f9be3b59331b7bc7853d7a0c49"
+        }
+      ],
+      "note": "Fuera de alcance: epígrafes, dietas y gastos de restaurantes no son recomendaciones de restaurantes."
+    },
+    {
+      "question_id": "q32",
+      "configuration": "corpus_384_48",
+      "category": "out_of_scope",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "5f450d3e2cf8e021616048323abac86c2d0636593a51ba18bcd835e7c5387236",
+          "doc_id": "irpf_manual_2025_p2",
+          "page": 433,
+          "page_end": 434,
+          "text_sha256": "5ae9ca28fd96e7c302ef1372e604d7a19caf9633e661d71a16fc2fb46b90651c"
+        }
+      ],
+      "note": "Fuera de alcance según briefing/benchmark: deducciones IRPF por inversión en sociedades no determinan el tipo del Impuesto sobre Sociedades."
+    },
+    {
+      "question_id": "q33",
+      "configuration": "corpus_384_48",
+      "category": "out_of_scope",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "2e43ee00306e55721d821d0c48e43851e89f292b8436f90e2ad0e6b3087875e3",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 54,
+          "page_end": 55,
+          "text_sha256": "180b85d024650631621ff3dd14be81b40c358584fddb5c941983189d81ec56ba"
+        }
+      ],
+      "note": "Fuera de alcance: IVA de créditos impagados o procedimientos de pago no constituyen una guía de reclamación jurídica de deudas."
+    },
+    {
+      "question_id": "q34",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "08df7599c14aa3fb503d4cf52dab8e74db775693b50a8281c145422c3dccfc92",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 380,
+          "page_end": 381,
+          "text_sha256": "7dd3983d2e9215249c77f56dba25a35ec57a8e73580cd416d94db1e399538a6f"
+        }
+      ],
+      "note": "Parte realmente utilizada, aprovechamiento separado e independiente y exclusión de indivisibles presentes."
+    },
+    {
+      "question_id": "q35",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "f2249e7579b580d1c050f01b4c82e18be1441048f01b119eeeafee2d34aee8c9",
+          "doc_id": "iva_manual_2025",
+          "page": 138,
+          "page_end": 139,
+          "text_sha256": "5fed11c048769cb5752c967f44cfa2cf07ac16b22317a542b3ccab472630d625"
+        }
+      ],
+      "note": "Los testigos vinculan uso parcial en operaciones con derecho a deducir con porcentaje de prorrata general."
+    },
+    {
+      "question_id": "q36",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 5,
+          "id": "616ddacb02ecab56d69de210bcef741c48cf98b67a1254468f4c8647c90a8fdc",
+          "doc_id": "iva_manual_2025",
+          "page": 139,
+          "page_end": 140,
+          "text_sha256": "e4d2a3caccb2ef8d61225c4eb5f058d37a8dd11f188eb2ee749e4509aea407f1"
+        }
+      ],
+      "note": "Diferencia superior a diez puntos presente. En 256/32 y 384/48 el testigo está en rango 4 y 5, respectivamente."
+    },
+    {
+      "question_id": "q37",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "fcd4476a7663c0cf958043755c7ebd7d0d1230848268f77c3353d144ffaad0bd",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 15,
+          "page_end": 16,
+          "text_sha256": "4ceb6e8dbe3d6bfca804afedd82f3a7773cce2a23be5aa2769c00cd33f212492"
+        }
+      ],
+      "note": "Los tres intervalos de la tabla reducida aparecen bajo 2025 en las tres configuraciones."
+    },
+    {
+      "question_id": "q38",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 2,
+          "id": "2b9b3c6601005118849595086f9cea1af8becdeff4ce61039435c36a874d1188",
+          "doc_id": "reta_leta_20_2007",
+          "page": 16,
+          "page_end": 16,
+          "text_sha256": "ada22aa7b2769bfe3fa1de15337f416cb139f09d4c55b446947d92a19f8c5b94"
+        }
+      ],
+      "note": "75 % e ingresos de un cliente vinculados al TRADE. Se citan testigos de LETA; puede haber evidencia alternativa anterior en IRPF. Los rangos no son mínimos certificados."
+    },
+    {
+      "question_id": "q39",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 2,
+          "id": "eafa8d48220390fd220dd2abd981e4ae1a11e449a00e395516ed42e5c1f3ef93",
+          "doc_id": "reta_leta_20_2007",
+          "page": 18,
+          "page_end": 18,
+          "text_sha256": "1fb7492b475dc47ab511f54b6f5b43268928a0791552a429ef4c9de546996224"
+        }
+      ],
+      "note": "18 días hábiles y posibilidad de mejora contractual presentes en las tres."
+    },
+    {
+      "question_id": "q40",
+      "configuration": "corpus_384_48",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 3,
+          "id": "2b9b3c6601005118849595086f9cea1af8becdeff4ce61039435c36a874d1188",
+          "doc_id": "reta_leta_20_2007",
+          "page": 16,
+          "page_end": 16,
+          "text_sha256": "ada22aa7b2769bfe3fa1de15337f416cb139f09d4c55b446947d92a19f8c5b94"
+        }
+      ],
+      "note": "Los cinco supuestos están presentes combinando 1+4 en 256/32 y en un fragmento en las otras dos. S acredita los supuestos preguntados, no todas las condiciones posteriores de contratación."
+    },
+    {
+      "question_id": "q01",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "13b012cac272619114fe84d114c89fa0a50ed4b50939d32c93ef25e013ee1add",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 13,
+          "page_end": 14,
+          "text_sha256": "cf5c42e78bd1cf0463a33751d813c0822bffc0769baff6746e7124d3f5150ad9"
+        }
+      ],
+      "note": "Porcentaje literal con contexto de 2025. 256/32 y 480/64 ofrecen página alternativa 14; S no implica cubrir todas las condiciones de la nota. La revisión previa era parcial: no establecía el primer rango posible."
+    },
+    {
+      "question_id": "q02",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "5d0fa02dec63af51b41945651d258de01ff7324c9e28fde901decc161415f188",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 379,
+          "page_end": 380,
+          "text_sha256": "588c21b7108e0ba0ac610404f865debd62d3935dadb2a0511d7338a132c014f8"
+        }
+      ],
+      "note": "Regla IRPF de uso exclusivo y excepciones: 256/32 y 384/48 las reparten entre fragmentos; 480/64 las reúne. La pregunta no nombra IRPF: se sigue el ámbito de su referencia, sin mezclar reglas IVA."
+    },
+    {
+      "question_id": "q03",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "d4630164584d37eb8f80abd82e6b143cb6787e1e6493310a4eca1e6e9ef3c5fb",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 439,
+          "page_end": 439,
+          "text_sha256": "7c7f4d939b0a5832115e76f00fd9d0c1d407a4e88cf80373f55194348590409c"
+        }
+      ],
+      "note": "Regla completa: 30 % de la proporción de superficie, salvo prueba de porcentaje distinto; no 30 % de todos los suministros."
+    },
+    {
+      "question_id": "q04",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "P",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "0af4cb53c20f9aae5ead4fe46bbe5e4d9171bf1e10d4205402368951f1f13d96",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 431,
+          "page_end": 432,
+          "text_sha256": "aef95edbfda2a936ec717f676e76c8dfe25c6efc861597d8b42d4802e9b6b7b0"
+        }
+      ],
+      "note": "256/32 y 384/48: revisión de top-8 sin regla directa suficiente. 480/64: regularización de cuotas, pero falta la regla principal de deducibilidad."
+    },
+    {
+      "question_id": "q05",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "P",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "02144ecf6b1eb16723de6fde3ff4d2bc89d59ed3059394fca2b75c8caadbd696",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 430,
+          "page_end": 431,
+          "text_sha256": "3ebe8e2673888b9e763526716cf95cbb6dd104b0f627a6dc0a3a7d3af73d046b"
+        }
+      ],
+      "note": "Evidencia parcial: familiares en 256/32; gastos del titular en 384/48; otros gastos de personal en 480/64. El pie de 427 genera un page-hit sin la explicación general. No se acredita la enumeración completa con los fragmentos seleccionados."
+    },
+    {
+      "question_id": "q06",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 6,
+          "id": "6b946a9175d9016c6dc68ae236028747247a9df8bb3e21252e418dbf183e826f",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 435,
+          "page_end": 435,
+          "text_sha256": "7e315bd3f9c9e6b7ee163810cec9fe6ab59a8e2f123195d17afda5dc4c2fce3c"
+        }
+      ],
+      "note": "Importe y fila España/sin pernocta vinculados al autónomo. En 480/64 el testigo explícito está en rango 6; las cifras de empleados en rangos anteriores no sustituyen su contexto."
+    },
+    {
+      "question_id": "q07",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 8,
+          "id": "b9e926845181dbf163ba4c2c7169859e450d59551aa6bb9302ce05efd11a52b3",
+          "doc_id": "iva_manual_2025",
+          "page": 118,
+          "page_end": 119,
+          "text_sha256": "752539aca8d4f259aab6d84cf7f0ed5726b874567fa6dca2f42b5c283dde2b0e"
+        }
+      ],
+      "note": "256/32: top-8 con índice/novedades pero sin el tipo general solicitado. 384/48 y 480/64: regla explícita en página 119."
+    },
+    {
+      "question_id": "q08",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "A",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "6e08a98f7e38ae0cb7145705f8f82627d708dfc35d8ec75bcb0b593d8a9e90e6",
+          "doc_id": "iva_manual_2025",
+          "page": 218,
+          "page_end": 219,
+          "text_sha256": "41a498b23cc9958f3fb0b43a13b33361f5959b19466cab95f2572057fc652edd"
+        },
+        {
+          "rank": 2,
+          "id": "57806dc67af76d72e354bb81e4a2f02dbe7438ff948930286a074da584b0f0c1",
+          "doc_id": "iva_manual_2025",
+          "page": 213,
+          "page_end": 214,
+          "text_sha256": "8d988ea013b370b7cc9db291517f67ecb3c75fcf97a7709bf617dfbd843d26dc"
+        },
+        {
+          "rank": 3,
+          "id": "17e6e367eb485755fdfcfefe98d1f463100adf0d49f3dfcc61778d71e33bf691",
+          "doc_id": "iva_manual_2025",
+          "page": 219,
+          "page_end": 220,
+          "text_sha256": "ea643a67318856ec13106d8fb4604408e140b4ed33f979f314c0c3c6a66d4675"
+        }
+      ],
+      "note": "256/32 y 384/48 recuperan la regla general trimestral; 480/64 recupera plazos del régimen simplificado. La pregunta pide una fecha concreta de 2025: falta contrastar calendario/inhábiles para validar esa fecha. A conserva esta limitación de la referencia; no corrige el benchmark ni afirma otro vencimiento."
+    },
+    {
+      "question_id": "q09",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "57122cb6c6c8ca123c2f3c62bb8697a1454ae2e7cffab37b93b4e8305c378890",
+          "doc_id": "iva_manual_2025",
+          "page": 327,
+          "page_end": 328,
+          "text_sha256": "5d2d58933dd97e095d2ca7cc524c5c6297f06e61efe75aa4f7d82bcff195020c"
+        }
+      ],
+      "note": "Los cuatro libros aparecen juntos en los testigos. En 256/32, page-hit a k=3 no equivale a lista completa; testigo en rango 7."
+    },
+    {
+      "question_id": "q10",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "P",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "8adbdd6b23043fbe9ca6a1cda7423ba28e3b6b0e6ef36cfb93720c3c80455378",
+          "doc_id": "iva_manual_2025",
+          "page": 139,
+          "page_end": 140,
+          "text_sha256": "b7bfd77088fe0d5d3803287f4decc38729f909d2eb4f0dbfa3006eab4b1850af"
+        },
+        {
+          "rank": 2,
+          "id": "07969f2027958c1465183457faa1bc381b2a374486c377db0a5b11818d5ab747",
+          "doc_id": "iva_manual_2025",
+          "page": 144,
+          "page_end": 145,
+          "text_sha256": "203e3bdb29cb942a3563e8b7889548032fd0912b3deade45396a55ccd1c79e3c"
+        }
+      ],
+      "note": "256/32 y 384/48 incluyen cuatro/nueve años y diferencia superior a diez puntos. En 480/64 falta la regla temporal general en el top-8, aunque aparecen procedimiento y casos especiales."
+    },
+    {
+      "question_id": "q11",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "8adbdd6b23043fbe9ca6a1cda7423ba28e3b6b0e6ef36cfb93720c3c80455378",
+          "doc_id": "iva_manual_2025",
+          "page": 139,
+          "page_end": 140,
+          "text_sha256": "b7bfd77088fe0d5d3803287f4decc38729f909d2eb4f0dbfa3006eab4b1850af"
+        }
+      ],
+      "note": "256/32 y 480/64 incluyen inferior a 3.005,06. En 384/48, el fragmento de página 139 termina antes de la lista: top-8 sin el umbral de valor."
+    },
+    {
+      "question_id": "q12",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 2,
+          "id": "3de90cf1c119c2f0518aedc79c5af031eaf047388877b07b793cf7d9c9851923",
+          "doc_id": "iva_manual_2025",
+          "page": 139,
+          "page_end": 139,
+          "text_sha256": "086f119c8ec2b209b0d6b93aa9f746f4e3944834b23081ab4a5789611e7962cd"
+        }
+      ],
+      "note": "Los testigos dicen deducción íntegra para uso exclusivo en operaciones con derecho a deducir."
+    },
+    {
+      "question_id": "q13",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "P",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "7ccfc996f7020c75be28119d2b3aec5a8be207e1ba26183e6d805a760ebc1cfe",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 15,
+          "page_end": 16,
+          "text_sha256": "33ba6775990c68f446c052f7dc0c0b4d2be8f7ee8fbbda7ccebfae9e167f90cb"
+        },
+        {
+          "rank": 2,
+          "id": "dfb4776721d9bd2936493235cb694350725045fdc31bc61479b5180a30a4ac38",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 11,
+          "page_end": 11,
+          "text_sha256": "a96980cc8a8a6af584077042aec7c74cead887abf14c88dfc7c2d0c13ca24f86"
+        },
+        {
+          "rank": 5,
+          "id": "f897f0524c9042a85213040eddb545af632ae506a47989e8c09314e4b846d26a",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 12,
+          "page_end": 13,
+          "text_sha256": "e2ad86351320c732e5673ab7be99a9eb746e88c4b466c1f1fa407f21f6ab1fe8"
+        }
+      ],
+      "note": "Las tres aportan información del sistema, pero no se acredita de forma explícita toda la regla de previsión del promedio mensual señalada en la nota. 256/32 aporta una explicación alternativa IRPF de previsión anual; no se confunde con el desarrollo completo del artículo 308."
+    },
+    {
+      "question_id": "q14",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 3,
+          "id": "c77f425595620a298db5db4351e8a87b0606857855a371c737f57a384d142fa0",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 59,
+          "page_end": 60,
+          "text_sha256": "48869adff52097288cea24640a6401dbee4edf24750898450acfd4d2283c6ecf"
+        }
+      ],
+      "note": "256/32 y 384/48 mezclan tramos de años previos con una tabla 2025 incompleta. 480/64 contiene en rango 3 las tablas completas de 2025, permitiendo contar 3 + 12."
+    },
+    {
+      "question_id": "q15",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 2,
+          "id": "7ccfc996f7020c75be28119d2b3aec5a8be207e1ba26183e6d805a760ebc1cfe",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 15,
+          "page_end": 16,
+          "text_sha256": "33ba6775990c68f446c052f7dc0c0b4d2be8f7ee8fbbda7ccebfae9e167f90cb"
+        }
+      ],
+      "note": "Año, tabla reducida, tramo y base mínima presentes. 384/48 responde desde un documento alternativo, aunque falle document-hit."
+    },
+    {
+      "question_id": "q16",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "7ccfc996f7020c75be28119d2b3aec5a8be207e1ba26183e6d805a760ebc1cfe",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 15,
+          "page_end": 16,
+          "text_sha256": "33ba6775990c68f446c052f7dc0c0b4d2be8f7ee8fbbda7ccebfae9e167f90cb"
+        }
+      ],
+      "note": "256/32 y 480/64 contienen la fila bajo 2025. En 384/48 la continuidad entre rangos 1 y 6 permite reconstruirla, pero el encabezado y la fila están separados: A, no S inequívoco."
+    },
+    {
+      "question_id": "q17",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "P",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "68b936e48c81141557b5725ffaf1d91701eb2320d7163259c8f2a9bb474b6ec1",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 16,
+          "page_end": 17,
+          "text_sha256": "6be04d87f433f979d581d19dab4b80a05ddb9ee9a66fe39adc12e2676eae9455"
+        },
+        {
+          "rank": 2,
+          "id": "a68d52b9e9ed0a0477f49da036d16afad667efb301edba88c13a6ec649026b50",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 9,
+          "page_end": 10,
+          "text_sha256": "1a4c5c85dddf61dd3b4e91530847b2a3ec4b8813286c791edab68437ead52da6"
+        },
+        {
+          "rank": 4,
+          "id": "b9377a843dc0457fd82b7eae04190f6d0802ca8130a393b5a6ffd9ab0ccf3812",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 10,
+          "page_end": 11,
+          "text_sha256": "af7edce8bd35b9137388d6962d4b6bd928ebde23d13115f1d3fe9a6bfadbf42e"
+        }
+      ],
+      "note": "256/32 y 384/48 recuperan la regla de base máxima RETA. En 480/64 la misma cifra aparece para artistas/taurinos: no se acepta extrapolarla al RETA."
+    },
+    {
+      "question_id": "q18",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 3,
+          "id": "1362b69403a55723fcea4756618fb3e0a9a24b814eec04c8472c9458628927e2",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 16,
+          "page_end": 16,
+          "text_sha256": "4da16c08c90234f9ab157026208dc321206327238cc98c9d03ed9cd3ce35133c"
+        }
+      ],
+      "note": "480/64 reúne los tres tipos en contexto RETA. 256/32 y 384/48 recuperan profesional/MEI, pero las coincidencias de 28,30 en otros contextos no se aceptan como prueba equivalente."
+    },
+    {
+      "question_id": "q19",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "P",
+      "evidence": [
+        {
+          "rank": 2,
+          "id": "1362b69403a55723fcea4756618fb3e0a9a24b814eec04c8472c9458628927e2",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 16,
+          "page_end": 16,
+          "text_sha256": "4da16c08c90234f9ab157026208dc321206327238cc98c9d03ed9cd3ce35133c"
+        }
+      ],
+      "note": "Ningún top-8 reúne los cinco componentes en contexto correcto. El 0,10 adicional de página 16 no es la formación de página 30. Page-hit no fundamenta la suma."
+    },
+    {
+      "question_id": "q20",
+      "configuration": "corpus_480_64",
+      "category": "year_dependent",
+      "status": "P",
+      "evidence": [
+        {
+          "rank": 4,
+          "id": "7ccfc996f7020c75be28119d2b3aec5a8be207e1ba26183e6d805a760ebc1cfe",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 15,
+          "page_end": 16,
+          "text_sha256": "33ba6775990c68f446c052f7dc0c0b4d2be8f7ee8fbbda7ccebfae9e167f90cb"
+        },
+        {
+          "rank": 7,
+          "id": "c77f425595620a298db5db4351e8a87b0606857855a371c737f57a384d142fa0",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 59,
+          "page_end": 60,
+          "text_sha256": "48869adff52097288cea24640a6401dbee4edf24750898450acfd4d2283c6ecf"
+        }
+      ],
+      "note": "256/32 y 384/48 permiten comparar tabla reducida 2024 y 2025 con encabezados. 480/64 recupera 2025 y otros años/contextos, sin acreditar el dato 2024 solicitado."
+    },
+    {
+      "question_id": "q21",
+      "configuration": "corpus_480_64",
+      "category": "year_dependent",
+      "status": "P",
+      "evidence": [
+        {
+          "rank": 4,
+          "id": "7ccfc996f7020c75be28119d2b3aec5a8be207e1ba26183e6d805a760ebc1cfe",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 15,
+          "page_end": 16,
+          "text_sha256": "33ba6775990c68f446c052f7dc0c0b4d2be8f7ee8fbbda7ccebfae9e167f90cb"
+        },
+        {
+          "rank": 6,
+          "id": "c77f425595620a298db5db4351e8a87b0606857855a371c737f57a384d142fa0",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 59,
+          "page_end": 60,
+          "text_sha256": "48869adff52097288cea24640a6401dbee4edf24750898450acfd4d2283c6ecf"
+        }
+      ],
+      "note": "256/32 permite comparar las filas de 2024 y 2025. En 384/48 falta la fila general 2025; en 480/64 falta la fila 2024. La coincidencia numérica con 2023 no prueba ausencia de cambio."
+    },
+    {
+      "question_id": "q22",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 5,
+          "id": "5d0fa02dec63af51b41945651d258de01ff7324c9e28fde901decc161415f188",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 379,
+          "page_end": 380,
+          "text_sha256": "588c21b7108e0ba0ac610404f865debd62d3935dadb2a0511d7338a132c014f8"
+        }
+      ],
+      "note": "Regla general de exclusividad para embarcaciones presente en las tres; 480/64 la encuentra en rango 5, no en su primer acierto de página."
+    },
+    {
+      "question_id": "q23",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "201c2d829a2611641c244984cf7a4893346195bff95244e451c658044e0e2cf6",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 938,
+          "page_end": 939,
+          "text_sha256": "b6a099da7a690fae8fa11f17815f2e5411360f796db304208d042827b77b757a"
+        }
+      ],
+      "note": "Consideración como bienes inmateriales presente; en 256/32 el primer page-hit es información sobre modelos, mientras la definición está en rango 6."
+    },
+    {
+      "question_id": "q24",
+      "configuration": "corpus_480_64",
+      "category": "no_answer",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "056a1859632920e3f816741b82c730e1799648a9612904c75dbd2163c09c56b4",
+          "doc_id": "iva_manual_2025",
+          "page": 271,
+          "page_end": 272,
+          "text_sha256": "1699ee44a5e04b4445bb86e0fa47cb6bed1e1a368a0b28adff6f211885234514"
+        }
+      ],
+      "note": "Caso sin respuesta según benchmark. El primer resultado trata IVA/devoluciones o modelos, no resuelve residencia en Andorra. No se ha ejecutado un sistema de abstención ni auditado exhaustivamente todo el corpus."
+    },
+    {
+      "question_id": "q25",
+      "configuration": "corpus_480_64",
+      "category": "no_answer",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "20e9b8f31fbf65c031b8cc76acb6b861498ee2a43403af7df3224929a47ee196",
+          "doc_id": "reta_leta_20_2007",
+          "page": 25,
+          "page_end": 26,
+          "text_sha256": "8d0245c86fc2497f385bb3998a5ddc54ee5584d4f7283a4ec5cd76e6aa79d9ad"
+        }
+      ],
+      "note": "Caso sin respuesta según benchmark. Bonificaciones de cuidadores, hogar o conciliación no prueban la bonificación exacta para contratar a un familiar menor en tareas domésticas."
+    },
+    {
+      "question_id": "q26",
+      "configuration": "corpus_480_64",
+      "category": "personal_case",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "a5bca40d3e4d8a7dc7da0ed20c8cbaf99888be138d5c297419f1cd7a83d09d30",
+          "doc_id": "iva_manual_2025",
+          "page": 304,
+          "page_end": 305,
+          "text_sha256": "256adb9b7467a63132eb734a00db0a044349e6f3a20ac2861b7f740a218727e1"
+        }
+      ],
+      "note": "Caso personal: los primeros resultados tratan declaraciones informativas y sus plazos. No hay facturas del usuario para determinar una cuota exacta."
+    },
+    {
+      "question_id": "q27",
+      "configuration": "corpus_480_64",
+      "category": "personal_case",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "b660815db0e14e6f5ca9f31c0ce8dcf407208fe05828059d96cae8ff864e5006",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 56,
+          "page_end": 56,
+          "text_sha256": "33d7f8eb0ea4eb0ac4bf518200de2fb5e8c92581c8e3740d3a21c5b9291a2fc7"
+        }
+      ],
+      "note": "Caso personal: aparecen cese de actividad o cotización de trabajadores del mar. Faltan datos del usuario y no se demuestra asignación correcta de tramo."
+    },
+    {
+      "question_id": "q28",
+      "configuration": "corpus_480_64",
+      "category": "personal_case",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "1f893f3315847dced3a76040e8fa2ff91802dab19f05cc3785dfb28b1ee08b4c",
+          "doc_id": "reta_regimen_cotizacion_2022",
+          "page": 41,
+          "page_end": 41,
+          "text_sha256": "c754d89035fbeefd5ccb50f800ae4ffe1e3f90895380fd73304dc04c324800e8"
+        }
+      ],
+      "note": "Caso personal: los primeros resultados tratan bonificaciones o prestación por cese; no equivalen al cálculo de la cuota al darse de baja a mitad de mes."
+    },
+    {
+      "question_id": "q29",
+      "configuration": "corpus_480_64",
+      "category": "personal_case",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "b280123d63a4b79b0e322de2c4289e1186adad3a8129814ddbd7b490db4196a7",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 1148,
+          "page_end": 1149,
+          "text_sha256": "4993276a611d6745c803b9e8fc6675d58ee66769cd2e8463ba210fe2fb21c2cc"
+        }
+      ],
+      "note": "Caso personal: límites de módulos y ejemplos de otros contribuyentes no calculan la cuota exacta del usuario. Ingresos menos gastos no basta para una liquidación final."
+    },
+    {
+      "question_id": "q30",
+      "configuration": "corpus_480_64",
+      "category": "out_of_scope",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "75f728276dd9fd675f2f54adb6ea6710c6f6ddc00b39d530dd3b1aee86a3012c",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 1226,
+          "page_end": 1226,
+          "text_sha256": "61d885b268117cd9b8a278227f776fa8eade55b1be4d497dac746382a2c7bd1a"
+        }
+      ],
+      "note": "Fuera de alcance: temporales pasados y eventos con Madrid son coincidencias temáticas, no una previsión meteorológica."
+    },
+    {
+      "question_id": "q31",
+      "configuration": "corpus_480_64",
+      "category": "out_of_scope",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "74d8627ffb54adf55b214be0605784addd57124b401eda21929a2ed9d2512d0d",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 425,
+          "page_end": 425,
+          "text_sha256": "d804ce4ffb3ad558ecea08882fa856a21a22365dfac009cba6e48c5ed53818f8"
+        }
+      ],
+      "note": "Fuera de alcance: epígrafes, dietas y gastos de restaurantes no son recomendaciones de restaurantes."
+    },
+    {
+      "question_id": "q32",
+      "configuration": "corpus_480_64",
+      "category": "out_of_scope",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "5d8bd8ca159415b3b67aeb64e0cfb7d9e5ca56cc103826e4c89193a656f8d8ba",
+          "doc_id": "irpf_manual_2025_p2",
+          "page": 323,
+          "page_end": 323,
+          "text_sha256": "b288f9fe5c7ca7b5ae84c20e953742651e8bff8d2ecf7031d9cf13f843a1bb4b"
+        }
+      ],
+      "note": "Fuera de alcance según briefing/benchmark: deducciones IRPF por inversión en sociedades no determinan el tipo del Impuesto sobre Sociedades."
+    },
+    {
+      "question_id": "q33",
+      "configuration": "corpus_480_64",
+      "category": "out_of_scope",
+      "status": "E",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "05deb85c5510992a4bf7d903e82e8fcdff99482e8bca1742beadeea60562e0f0",
+          "doc_id": "iva_manual_2025",
+          "page": 172,
+          "page_end": 173,
+          "text_sha256": "7180af891712fb9c9d15bcdfab31800cc58ae1330a4f4c6b97a0e0b1382caefc"
+        }
+      ],
+      "note": "Fuera de alcance: IVA de créditos impagados o procedimientos de pago no constituyen una guía de reclamación jurídica de deudas."
+    },
+    {
+      "question_id": "q34",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "5c2bb77c571cab75f7a9933097a0362a37514f74f3de0affce51bac42c4b9790",
+          "doc_id": "irpf_manual_2025_p1",
+          "page": 380,
+          "page_end": 381,
+          "text_sha256": "f63209fac2071230d95abaafbf429fa3b8a17f8d44e6f790c256cdc02456bafb"
+        }
+      ],
+      "note": "Parte realmente utilizada, aprovechamiento separado e independiente y exclusión de indivisibles presentes."
+    },
+    {
+      "question_id": "q35",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "3de90cf1c119c2f0518aedc79c5af031eaf047388877b07b793cf7d9c9851923",
+          "doc_id": "iva_manual_2025",
+          "page": 139,
+          "page_end": 139,
+          "text_sha256": "086f119c8ec2b209b0d6b93aa9f746f4e3944834b23081ab4a5789611e7962cd"
+        }
+      ],
+      "note": "Los testigos vinculan uso parcial en operaciones con derecho a deducir con porcentaje de prorrata general."
+    },
+    {
+      "question_id": "q36",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 2,
+          "id": "8adbdd6b23043fbe9ca6a1cda7423ba28e3b6b0e6ef36cfb93720c3c80455378",
+          "doc_id": "iva_manual_2025",
+          "page": 139,
+          "page_end": 140,
+          "text_sha256": "b7bfd77088fe0d5d3803287f4decc38729f909d2eb4f0dbfa3006eab4b1850af"
+        }
+      ],
+      "note": "Diferencia superior a diez puntos presente. En 256/32 y 384/48 el testigo está en rango 4 y 5, respectivamente."
+    },
+    {
+      "question_id": "q37",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "7ccfc996f7020c75be28119d2b3aec5a8be207e1ba26183e6d805a760ebc1cfe",
+          "doc_id": "reta_orden_cotizacion_2025",
+          "page": 15,
+          "page_end": 16,
+          "text_sha256": "33ba6775990c68f446c052f7dc0c0b4d2be8f7ee8fbbda7ccebfae9e167f90cb"
+        }
+      ],
+      "note": "Los tres intervalos de la tabla reducida aparecen bajo 2025 en las tres configuraciones."
+    },
+    {
+      "question_id": "q38",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 5,
+          "id": "9c44bf8c3af543ec095620ecc1f3ae171ccc85d2e90128e97458f3a155666ca6",
+          "doc_id": "reta_leta_20_2007",
+          "page": 15,
+          "page_end": 16,
+          "text_sha256": "2cc0024ac029318fb7932a22349714087b4860a38cdbf3f17e75a9f179b44de5"
+        }
+      ],
+      "note": "75 % e ingresos de un cliente vinculados al TRADE. Se citan testigos de LETA; puede haber evidencia alternativa anterior en IRPF. Los rangos no son mínimos certificados."
+    },
+    {
+      "question_id": "q39",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "c403b125298d6da6998aa489011fd8d26f3efe4e95a708cbcd39ca9dc09a9c65",
+          "doc_id": "reta_leta_20_2007",
+          "page": 18,
+          "page_end": 18,
+          "text_sha256": "522db561eabafc23848d5f1e25bb19fe3d677ca49ed7a4af6387b070134aecc4"
+        }
+      ],
+      "note": "18 días hábiles y posibilidad de mejora contractual presentes en las tres."
+    },
+    {
+      "question_id": "q40",
+      "configuration": "corpus_480_64",
+      "category": "direct",
+      "status": "S",
+      "evidence": [
+        {
+          "rank": 1,
+          "id": "4e97438792129b99a5be944642ba59443fda63a09aaac75a7cd0384c890de6a1",
+          "doc_id": "reta_leta_20_2007",
+          "page": 16,
+          "page_end": 16,
+          "text_sha256": "d053abf3a90ec82bd598edf1ae4c62b51611a5a5845c2f377c818d7118359f65"
+        }
+      ],
+      "note": "Los cinco supuestos están presentes combinando 1+4 en 256/32 y en un fragmento en las otras dos. S acredita los supuestos preguntados, no todas las condiciones posteriores de contratación."
+    }
+  ]
+}

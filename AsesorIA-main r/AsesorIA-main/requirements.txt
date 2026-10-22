@@ -1,0 +1,34 @@
+# --- Orchestration / RAG ---
+langchain>=0.2.0
+langchain-community>=0.2.0
+langchain-core>=0.2,<2
+chromadb>=1.5.9,<2
+
+# --- LLM providers (install only the one you use) ---
+langchain-openai>=0.1.0
+langchain-anthropic 
+langchain-ollama
+langchain-groq
+
+# --- Document processing ---
+pypdf>=4.0
+pdfplumber>=0.11
+
+# --- Backend ---
+pydantic>=2.6
+pydantic-settings>=2.2
+python-dotenv>=1.0.0
+pyyaml>=6.0
+
+# --- Frontend ---
+chainlit>=1.1.0
+plotly>=5.18.0
+# Conversation persistence (Chainlit data layer on SQLite)
+sqlalchemy>=2.0.28
+aiosqlite>=0.20.0
+
+# --- Async support (SQLAlchemy + Chainlit) ---
+greenlet>=3.0.0
+
+# --- Embedding inference (compatible with transformers 4.x) ---
+sentence-transformers>=3.4,<4

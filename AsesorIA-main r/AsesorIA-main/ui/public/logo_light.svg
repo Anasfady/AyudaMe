@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Asesor Fiscal IA">
+  <rect width="32" height="32" rx="8" fill="#1a2b4c"/>
+  <path d="M9 7h10l6 6v11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z" fill="#f7fafc"/>
+  <path d="M19 7l6 6h-6V7z" fill="#8fd6cc"/>
+  <rect x="10.5" y="16" width="11" height="2.2" rx="1.1" fill="#1a2b4c"/>
+  <rect x="10.5" y="20.5" width="7.5" height="2.2" rx="1.1" fill="#1a2b4c"/>
+  <circle cx="16" cy="11.5" r="2.4" fill="#24a69a"/>
+</svg>
